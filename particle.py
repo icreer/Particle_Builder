@@ -1,10 +1,10 @@
 #Object for a particle
-class Particle:
+class Player:
     """
     Purpose: create a player object and variables
     
     """
-    def __init__(self, init_x, init_y):
+    def __init__(self, position, speed):
         """
         Purpose: create the base attributes and variables used within the class
         Parameters:
@@ -15,7 +15,6 @@ class Particle:
         Return: 
             none
         """ 
-        self.x = init_x
-        self.y = init_y
-        
+        self.position = position
+        self.speed = speed
     

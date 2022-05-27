@@ -19,7 +19,6 @@ class UpdateParticle:
             none 
         """
         self.y = 0
-        self.punching  = False
 
     def update_player(self, player, delta, keys, player_color):
         """
@@ -46,49 +45,14 @@ class UpdateParticle:
            
             
         #jump (w and i)
-        if pyray.is_key_down(keys[2]) and player.can_jump and not pyray.is_key_down(keys[3]):
-            player.y = -constants.PLAYER_JUMP_SPD
+        if pyray.is_key_down(keys[2]):
+            player.position.y -= constants.PLAYER_VERT_SPD * delta
         
         #sheild (s and k)
         
         if pyray.is_key_down(keys[3]):
-            if player.position.y += constants.PLAYER_HOR_SPD:
-                player.position.y = player.position.y + 1
-            if player.get_shield_health() > 0:
-                player.set_shield(True)
-                pyray.draw_rectangle_lines(int(player.position.x)-25, int(player.position.y)-45,50,50,player_color)
+            player.position.y += constants.PLAYER_VERT_SPD * delta
            
             
 
-        y
-
-        #if a player is not touching a platform they will fall until they do or hit the collision borders
-        #it also disables a players ability to jump while falling
-        if not hit_obstacle:
-            player.position.y += player.speed * delta
-            player.speed += constants.G * delta
-            player.can_jump = False
-        else:
-            player.can_jump = True
-
         
-        #draws the lazer(ranged attack) line across the screen from where the player fired it
-        if (not player.can_shoot) and player.center > 0 and player.center < constants.SCREEN_WIDTH:
-            pyray.draw_line(int(player.center), int(player.laser_y) - 20, int(player.end_x), int(player.laser_y) - 20, player_color)
-            player.center = player.center + player.change
-            player.end_x = player.end_x + player.change
-            player.end_x = player.center + constants.LASER_LENGTH
-            
-        if player.center <= 0 or player.center >= constants.SCREEN_WIDTH:
-            player.center = player.position.x
-            player.can_shoot = True
-
-    def get_punching(self):
-        """
-        Purpose: return a true or false variable if the player is punching or not
-        Parameters:
-            self - an instance of the attributes of the player class
-        Return:
-            punching - true or false variable
-        """
-        return self.punching
