@@ -1,13 +1,11 @@
 import pygame
 from sys import exit
+from constants import *
 
-title = "Particle Builder"
-width = 800
-height = 400
 
 pygame.init()
-screen = pygame.display.set_mode((width, height))
-pygame.display.set_caption(title)
+screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+pygame.display.set_caption(TITLE)
 clock = pygame.time.Clock()
 
 while True:
