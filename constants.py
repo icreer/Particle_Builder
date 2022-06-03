@@ -3,13 +3,7 @@ Purpose: hold some base values used throughout the program such as colors, gravi
         screen information, base damage of attacks, the knockback multiplyer
 
 """
-from raylib.colors import (
-    DARKGRAY,
-    RED,
-    BLACK,
-    GRAY,
-    LIGHTGRAY,
-)
+
 PLAYER_VERT_SPD = 200.0
 PLAYER_HOR_SPD = 200.0
 
