@@ -1,6 +1,8 @@
 import pygame
 import pygame_menu
 from sys import exit
+from Main_Menu.High_Score import HighScores
+from Main_Menu.Information_Menu import InformationMenu
 from constants import *
 
 
@@ -50,32 +52,6 @@ class Menu():
         """Method for opening the high scores window"""
         high_scores_session = HighScores()
         high_scores_session.open_window()
-
-class InformationMenu():
-    """Menu to display instructions and background for the game"""
-    def show_information(self):
-        """Initialize the information menu windoww"""
-        print("Placeholder for information")
-        self.information_surface = pygame.display.set_mode((600,400))
-
-        self.information_menu = pygame_menu.Menu("Information",600,400,onclose=self.open_original_menu)
-        self.information_menu.add.label("Here's some information")
-        self.information_menu.add.button("Exit",self.open_original_menu)
-        self.information_menu.mainloop(self.information_surface)
-
-    def open_original_menu(self):
-        """Close information window and return to begin_game menu"""
-        print("opening")
-        menu = Menu()
-        menu.open_menu()
-
-class HighScores():
-    """Class for accessing and displaying all previous high scores"""
-    def __init__(self):
-        print("hi there, initiating")
-
-    def open_window(self):
-        print("Opening window")
 
 
 #Create instance of begin_game menu class

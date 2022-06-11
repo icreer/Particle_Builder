@@ -2,8 +2,9 @@
 
 
 #updates the player and other particle positionsimport pyray
+from multiprocessing import Event
 import constants
-import pyray
+import pygame
 class UpdateParticle:
     """
     Purpose: create a class which can be utilized to update the player 
@@ -33,24 +34,24 @@ class UpdateParticle:
         Return:
             none 
         """
-
+        
         #left (a and j)
-        if pyray.is_key_down(keys[0]) :
+        if pygame.K_a == pygame.KEYDOWN or pygame.K_j == pygame.KEYDOWN:
             player.position.x -= constants.PLAYER_HOR_SPD * delta
             
 
         #right (d and l)
-        if pyray.is_key_down(keys[1]) :
+        if pygame.K_d == pygame.KEYDOWN or pygame.K_l == pygame.KEYDOWN:
             player.position.x += constants.PLAYER_HOR_SPD * delta
            
             
         #jump (w and i)
-        if pyray.is_key_down(keys[2]):
+        if pygame.K_w == pygame.KEYDOWN or pygame.K_i == pygame.KEYDOWN:
             player.position.y -= constants.PLAYER_VERT_SPD * delta
         
         #sheild (s and k)
         
-        if pyray.is_key_down(keys[3]):
+        if pygame.K_s == pygame.KEYDOWN or pygame.K_k == pygame.KEYDOWN:
             player.position.y += constants.PLAYER_VERT_SPD * delta
            
             
