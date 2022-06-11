@@ -2,11 +2,15 @@
 
 # Overview
 
-{Important!  Do not say in this section that this is college assignment.}
-
-{Provide a description of your team project.  Describe how to use the software.}
-
-{If this is an online class, then provide a link to your YouTube demonstration.  It should be a 4-5 minute demo of the software running and a walkthrough of the code.}
+The particle builder is a game that is a mash-up of asteroid and 2048. 
+The overall goal is to build largest stable atom that you can. Witch is a 
+debated topic but in nature is Uranium with a atomic number of 92. The 
+challenge of the game is building up to Uranium from a single up quark. As 
+you build up to a Uranium Atom you can build an unstable radioactive atom 
+that once can lead to your atom decaying and you being set back in your 
+progress of building your atom. Another risk that the player has is that high 
+energy light waves can come in and destroy your atom by chipping off a 
+electron.
 
 [Software Demo Video](http://youtube.link.goes.here)
 
