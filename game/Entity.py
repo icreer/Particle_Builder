@@ -2,7 +2,7 @@ import pygame
 from pygame.locals import *
 from pygame.math import Vector2
 from pygame import mixer
-from constants import *
+from Constants.constants import *
 
 
 '''

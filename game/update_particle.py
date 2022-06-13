@@ -3,7 +3,7 @@
 
 #updates the player and other particle positionsimport pyray
 from multiprocessing import Event
-import constants
+import Constants.constants as constants
 import pygame
 class UpdateParticle:
     """

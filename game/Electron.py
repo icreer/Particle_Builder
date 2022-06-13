@@ -1,7 +1,7 @@
 
 from pygame.locals import *
 from pygame.math import Vector2
-from constants import *
+from Constants.constants import *
 from game.Entity import *
 import random
 
