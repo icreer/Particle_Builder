@@ -22,6 +22,7 @@ class Entity():
 
     def move(self, dt):
         self.position.y += dt * self.speed
+        self.position.x += dt * self.speed
         self.bottom = self.position.y + (self.radius * 2)
         self.right = self.position.x + (self.radius * 2)
         self.left = self.position.x

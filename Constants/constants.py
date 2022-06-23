@@ -13,3 +13,11 @@ SCREEN_HEIGHT = 900
 TITLE = "Particle Builder"
 
 FONT_SIZE = 30
+
+"""
+Colors
+"""
+gray = (60,60,60)
+red = (255,0,0)
+green = (0,255,0)
+blue = (0,0,255)
