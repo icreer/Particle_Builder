@@ -36,9 +36,9 @@ class Entity():
     """
     The initaliser sets up the entity color and sound effect 
     """
-    def initialiser(self, color, sfx_path):
+    def initialiser(self, color):
         self.entity_color = color
-        self.sound = mixer.Sound(sfx_path)
+        
 
     def draw(self, screen):
         pygame.draw.circle(screen, self.entity_color, (self.position.x, self.position.y), self.radius)
