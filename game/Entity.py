@@ -20,13 +20,17 @@ class Entity():
     right = 0
     left = 0
 
-    def move(self, dt):
-        self.position.y += dt * self.speed
-        self.position.x += dt * self.speed
-        self.up = self.position.y - (self.radius * random.randrange(0,10))
-        self.bottom = self.position.y + (self.radius * random.randrange(0,10))
-        self.right = self.position.x + (self.radius * random.randrange(0,10))
-        self.left = self.position.x - (self.radius * random.randrange(0,10))
+    def move(self,dt): 
+        ranx = random.randrange(-5,5)
+        rany = random.randrange(-5,5)
+        self.position.y += dt * self.speed / rany
+        self.position.x +=  dt * self.speed / ranx
+
+
+       # self.up = self.position.y + (self.radius * random.randrange(0,10))
+       # self.bottom = self.position.y - (self.radius * random.randrange(0,10))
+        #self.right = self.position.x - (self.radius * random.randrange(0,10))
+        #self.left = self.position.x + (self.radius * random.randrange(0,10))
 
     def collisions(self, enemies):
         if(self.position.y > 390):
