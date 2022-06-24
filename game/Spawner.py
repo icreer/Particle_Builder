@@ -25,10 +25,10 @@ class Spawner():
         random_int = random.randint(0, 4)
         if random_int == 0:
             entity = Electron()
-            self.concurrent_entities += 1
+            #self.concurrent_entities += 1
         else:
             entity = Protons()
-            self.concurrent_entities = 0
+            #self.concurrent_entities = 0
         entities_alive.append(entity)
 
         self.time_elapsed = 0

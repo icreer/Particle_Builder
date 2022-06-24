@@ -3,7 +3,7 @@ from pygame.locals import *
 from pygame.math import Vector2
 from pygame import mixer
 from Constants.constants import *
-
+import random
 
 '''
 This is the base Entity Class. 
@@ -23,9 +23,10 @@ class Entity():
     def move(self, dt):
         self.position.y += dt * self.speed
         self.position.x += dt * self.speed
-        self.bottom = self.position.y + (self.radius * 2)
-        self.right = self.position.x + (self.radius * 2)
-        self.left = self.position.x
+        self.up = self.position.y - (self.radius * random.randrange(0,10))
+        self.bottom = self.position.y + (self.radius * random.randrange(0,10))
+        self.right = self.position.x + (self.radius * random.randrange(0,10))
+        self.left = self.position.x - (self.radius * random.randrange(0,10))
 
     def collisions(self, enemies):
         if(self.position.y > 390):
