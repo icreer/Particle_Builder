@@ -13,7 +13,9 @@ class Spawner():
         for i in range(len(entity_alive)):
             try:
                 entity_alive[i].draw(self.screen)
-                entity_alive[i].move(10)
+                entity_alive[i].move(8)
+                entity_alive[i].checky()
+                entity_alive[i].checkx()
             except:
                 pass
 

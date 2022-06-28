@@ -29,22 +29,7 @@ class Entity():
         
         self.position.x += dt * self.speed * self.x_direction #/ranx
         self.position.y += dt *  self.speed * self.y_direction #/rany
-       # print(self.position.y)
-        #print(self.position.x)
-
-        if self.position.y < 20 or self.position.y > SCREEN_HEIGHT:
-            self.y_direction *= -1 
-            print("pass")
-            
-        elif self.positon.x < 0 or self.position.x > SCREEN_WIDTH:
-            self.x_direction *= -1
-            print("pass") 
-            
-
-       # self.up = self.position.y + (self.radius * random.randrange(0,10))
-       # self.bottom = self.position.y - (self.radius * random.randrange(0,10))
-        #self.right = self.position.x - (self.radius * random.randrange(0,10))
-        #self.left = self.position.x + (self.radius * random.randrange(0,10))
+       
 
     
     """
@@ -56,3 +41,11 @@ class Entity():
 
     def draw(self, screen):
         pygame.draw.circle(screen, self.entity_color, (self.position.x, self.position.y), self.radius)
+
+    def checky(self):
+        if self.position.y < 20 or self.position.y > SCREEN_HEIGHT:
+            self.y_direction *= -1
+        
+    def checkx(self):
+        if self.position.x < 0 or self.position.x > SCREEN_WIDTH:
+            self.x_direction *= -1    
