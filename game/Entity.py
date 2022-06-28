@@ -24,8 +24,6 @@ class Entity():
         y_direction = 1
 
     def move(self,dt): 
-        ranx = random.randrange(-5,5)
-        rany = random.randrange(-5,5)
         
         self.position.x += dt * self.speed * self.x_direction #/ranx
         self.position.y += dt *  self.speed * self.y_direction #/rany
@@ -41,7 +39,7 @@ class Entity():
 
     def draw(self, screen):
         pygame.draw.circle(screen, self.entity_color, (self.position.x, self.position.y), self.radius)
-
+        
     def checky(self):
         if self.position.y < 20 or self.position.y > SCREEN_HEIGHT:
             self.y_direction *= -1
