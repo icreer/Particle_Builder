@@ -1,3 +1,4 @@
+from html import entities
 import pygame
 from pygame.locals import *
 from pygame.math import Vector2
@@ -14,30 +15,38 @@ class Entity():
 
     entity_color = (0, 0, 0)
     sound = 0
-
+    x_direction = random.randrange(-1, 1)
+    y_direction = random.randrange(-1, 1)
     radius = 0
-
-    right = 0
-    left = 0
+    if x_direction == 0:
+        x_direction = 1
+    if y_direction == 0:
+        y_direction = 1
 
     def move(self,dt): 
         ranx = random.randrange(-5,5)
         rany = random.randrange(-5,5)
-        self.position.y += dt * self.speed / rany
-        self.position.x +=  dt * self.speed / ranx
+        
+        self.position.x += dt * self.speed * self.x_direction #/ranx
+        self.position.y += dt *  self.speed * self.y_direction #/rany
+       # print(self.position.y)
+        #print(self.position.x)
 
+        if self.position.y < 20 or self.position.y > SCREEN_HEIGHT:
+            self.y_direction *= -1 
+            print("pass")
+            
+        elif self.positon.x < 0 or self.position.x > SCREEN_WIDTH:
+            self.x_direction *= -1
+            print("pass") 
+            
 
        # self.up = self.position.y + (self.radius * random.randrange(0,10))
        # self.bottom = self.position.y - (self.radius * random.randrange(0,10))
         #self.right = self.position.x - (self.radius * random.randrange(0,10))
         #self.left = self.position.x + (self.radius * random.randrange(0,10))
 
-    def collisions(self, enemies):
-        if(self.position.y > 390):
-            enemies.remove(self)
-            enemies = enemies[:-1]
-            self.sound.play()
-
+    
     """
     The initaliser sets up the entity color and sound effect 
     """
