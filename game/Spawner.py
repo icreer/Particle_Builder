@@ -4,6 +4,7 @@ from Constants.constants import *
 from game.Electron import Electron
 import random
 from game.Protons import Protons
+from game.Light import Light
 
 class Spawner():
     def __init__(self,screen):
@@ -24,14 +25,15 @@ class Spawner():
 
     def spawner(self, entities_alive):
         
-        random_int = random.randint(0, 4)
+        random_int = random.randint(0, 2)
         if len(entities_alive) < 10:
             if random_int == 0:
                 entity = Electron()
-                #self.concurrent_entities += 1
+            elif random_int == 1:
+                entity = Light()  
             else:
                 entity = Protons()
-                #self.concurrent_entities = 0
+                
             entities_alive.append(entity)
 
         self.time_elapsed = 0

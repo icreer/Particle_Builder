@@ -8,15 +8,15 @@ import random
 '''
 If you colode withe the electron entity you end up dieing
 '''
-class Protons(Entity):
+class Light(Entity):
     def __init__(self):
-        self.speed = random.randrange(1, 3)
+        self.speed = random.randrange(3, 6)
         self.position = Vector2()
         self.position.x = random.randrange(0, SCREEN_WIDTH)
         self.position.y = random.randrange(0, SCREEN_HEIGHT)
 
-        self.initialiser((255, 0, 0))
+        self.initialiser((255, 255, 0))
 
-        self.tag = "protons"
+        self.tag = "light"
 
-        self.radius = random.randrange(25, 30)
+        self.radius = 5

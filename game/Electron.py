@@ -20,4 +20,4 @@ class Electron(Entity):
 
         self.tag = "electron"
 
-        self.radius = random.randrange(10, 30)
+        self.radius = random.randrange(10, 20)
