@@ -25,6 +25,7 @@ class game_play():
             #enamy.draw(screen)
             spawner.spawner(entities)
             spawner.draw_particales(entities)
+            
 
 
             for event in pygame.event.get():

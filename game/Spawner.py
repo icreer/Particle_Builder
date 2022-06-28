@@ -13,7 +13,7 @@ class Spawner():
         for i in range(len(entity_alive)):
             try:
                 entity_alive[i].draw(self.screen)
-                entity_alive[i].move(60)
+                entity_alive[i].move(10)
             except:
                 pass
 
@@ -33,3 +33,5 @@ class Spawner():
             entities_alive.append(entity)
 
         self.time_elapsed = 0
+    
+   
