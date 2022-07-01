@@ -1,10 +1,10 @@
 import pygame
 from game.Entity import Entity
 from Constants.constants import *
-from game.Electron import Electron
+from game.Entity_Type.Electron import Electron
 import random
-from game.Protons import Protons
-from game.Light import Light
+from game.Entity_Type.Protons import Protons
+from game.Entity_Type.Light import Light
 
 class Spawner():
     def __init__(self,screen):
