@@ -1,10 +1,10 @@
 import pygame
 import pygame_menu
 from sys import exit
-from High_Score import HighScores
-from Information_Menu import InformationMenu
-#from Game_Play import game_play
-#from Constants.constants import *
+from Main_Menu.High_Score import HighScores
+from Main_Menu.Information_Menu import InformationMenu
+from game.Game_Play import game_play
+from Constants.constants import *
 
 pygame.init()
 class Menu():
@@ -12,8 +12,8 @@ class Menu():
     def open_menu(self):
 
         #Establishing the main window itself
-        self.main_surface = pygame.display.set_mode((600, 400))
-        self.menu = pygame_menu.Menu('Welcome', 600, 400, theme=pygame_menu.themes.THEME_BLUE)
+        self.main_surface = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+        self.menu = pygame_menu.Menu('Welcome', SCREEN_WIDTH, SCREEN_HEIGHT, theme=pygame_menu.themes.THEME_BLUE)
 
         #Adding buttons to the menu
         self.menu.add.button("Play",self.start_game)
@@ -27,8 +27,8 @@ class Menu():
     def start_game(self):
         """Method called when the user hits 'play' in main menu"""
         print("Place holder for game start")
-        #game_session = game_play()
-        #game_session.start_game_play()
+        game_session = game_play()
+        game_session.start_game_play()
 
     def show_information(self):
         """Method for opening the information window"""

@@ -47,3 +47,6 @@ class Entity():
     def checkx(self):
         if self.position.x < 0 or self.position.x > SCREEN_WIDTH:
             self.x_direction *= -1    
+
+    def slow_down_over_time(self):
+        self.speed -= .50 * self.sped 
