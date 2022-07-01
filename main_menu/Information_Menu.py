@@ -2,6 +2,7 @@ from threading import main_thread
 import pygame
 import pygame_menu
 #from main_menu import Menu
+from Constants.constants import *
 
 
 class InformationMenu():
@@ -9,9 +10,9 @@ class InformationMenu():
     def show_information(self):
         """Initialize the information menu windoww"""
         print("Placeholder for information")
-        self.information_surface = pygame.display.set_mode((600,400))
+        self.information_surface = pygame.display.set_mode((SCREEN_WIDTH,SCREEN_HEIGHT))
 
-        self.information_menu = pygame_menu.Menu("Information",600,400,onclose=self.open_original_menu)
+        self.information_menu = pygame_menu.Menu("Information",SCREEN_WIDTH,SCREEN_HEIGHT,onclose=self.open_original_menu)
         self.information_menu.add.label("Here's some information")
         for line in ["The particle builder is a game ",
                     "that is a mash-up of asteroid and 2048. "
