@@ -6,15 +6,14 @@ from Main_Menu.Information_Menu import InformationMenu
 from game.Game_Play import game_play
 from Constants.constants import *
 
-
 pygame.init()
 class Menu():
     """Main menu class"""
     def open_menu(self):
 
         #Establishing the main window itself
-        self.main_surface = pygame.display.set_mode((600, 400))
-        self.menu = pygame_menu.Menu('Welcome', 600, 400, theme=pygame_menu.themes.THEME_BLUE)
+        self.main_surface = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+        self.menu = pygame_menu.Menu('Welcome', SCREEN_WIDTH, SCREEN_HEIGHT, theme=pygame_menu.themes.THEME_BLUE)
 
         #Adding buttons to the menu
         self.menu.add.button("Play",self.start_game)

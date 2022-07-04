@@ -1,34 +1,42 @@
 import pygame
 from game.Entity import Entity
 from Constants.constants import *
-from game.Electron import Electron
+from game.Entity_Type.Electron import Electron
 import random
-from game.Protons import Protons
+from game.Entity_Type.Protons import Protons
+from game.Entity_Type.Light import Light
 
 class Spawner():
     def __init__(self,screen):
         self.screen = screen
 
-    def draw_particales(self, dt, entity_alive):
-        for i in range(entity_alive):
+    def draw_particales(self, entity_alive):
+        for i in range(len(entity_alive)):
             try:
                 entity_alive[i].draw(self.screen)
-                entity_alive[i].move(dt)
+                entity_alive[i].move(8)
+                entity_alive[i].checky()
+                entity_alive[i].checkx()
+                entity_alive[i].slow_down_over_time()
             except:
                 pass
-            
+
     def timer(self,dt):
         self.time_elaspe = dt
 
     def spawner(self, entities_alive):
-        if(self.time_elapsed >= self.time_between_spawns):
-            random_int = random.randint(0, 4)
-            if(random_int == 0):
+        
+        random_int = random.randint(0, 2)
+        if len(entities_alive) < 10:
+            if random_int == 0:
                 entity = Electron()
-                self.concurrent_entities += 1
+            elif random_int == 1:
+                entity = Light()  
             else:
                 entity = Protons()
-                self.concurrent_entities = 0
+                
             entities_alive.append(entity)
 
-            self.time_elapsed = 0
+        self.time_elapsed = 0
+    
+   
