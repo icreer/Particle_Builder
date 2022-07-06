@@ -1,10 +1,14 @@
 #Object for a particle
-class Player:
+from pygame import Vector2
+from .Entity import Entity
+from Constants.constants import *
+import pygame
+class Player(Entity):
     """
     Purpose: create a player object and variables
     
     """
-    def __init__(self, position, speed):
+    def __init__(self):
         """
         Purpose: create the base attributes and variables used within the class
         Parameters:
@@ -15,6 +19,38 @@ class Player:
         Return: 
             none
         """ 
-        self.position = position
-        self.speed = speed
-    
+        self.position = Vector2()
+        self.position.x = SCREEN_WIDTH // 2
+        self.position.y = SCREEN_HEIGHT // 2
+        self.speed = 0
+        self.initialiser(blue)
+        self.tag = 'Player'
+        self.radius = 15
+
+    def checky(self):
+        if self.position.y >= SCREEN_HEIGHT - self.radius:
+            self.position.y = SCREEN_HEIGHT - self.radius
+        elif self.position.y < self.radius:
+            self.position.y = self.radius
+
+    def checkx(self):
+        if self.position.x >= SCREEN_WIDTH - self.radius:
+            self.position.x = SCREEN_WIDTH - self.radius
+        elif self.position.x < self.radius:
+            self.position.x = self.radius
+
+    def move_left(self):
+        self.position.x -= SPEED
+        self.checkx()
+
+    def move_right(self):
+        self.position.x += SPEED
+        self.checkx()
+
+    def move_up(self):
+        self.position.y -= SPEED
+        self.checky()
+
+    def move_down(self):
+        self.position.y += SPEED
+        self.checky()

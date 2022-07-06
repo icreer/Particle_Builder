@@ -10,7 +10,7 @@ class Spawner():
     def __init__(self,screen):
         self.screen = screen
 
-    def draw_particales(self, entity_alive):
+    def draw_particales(self, entity_alive, player):
         for i in range(len(entity_alive)):
             try:
                 entity_alive[i].draw(self.screen)
@@ -20,6 +20,7 @@ class Spawner():
                 entity_alive[i].slow_down_over_time()
             except:
                 pass
+        player.draw(self.screen)
 
     def timer(self,dt):
         self.time_elaspe = dt
