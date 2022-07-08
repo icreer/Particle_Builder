@@ -6,7 +6,7 @@ import random
 
 
 '''
-If you colode withe the electron entity you end up dieing
+If you collide with the electron entity you end up dying
 '''
 class Protons(Entity):
     def __init__(self):
