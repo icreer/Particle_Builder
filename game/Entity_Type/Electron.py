@@ -7,7 +7,7 @@ import random
 
 
 '''
-If you colode withe the electron entity you end up dieing
+If you collide withe the electron entity you end up dying
 '''
 class Electron(Entity):
     def __init__(self):
