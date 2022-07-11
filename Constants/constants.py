@@ -25,4 +25,4 @@ blue = (0,0,255)
 """
 Player
 """
-SPEED = 50
+SPEED = 25

@@ -41,7 +41,7 @@ class Entity():
         pygame.draw.circle(screen, self.entity_color, (self.position.x, self.position.y), self.radius)
         
     def checky(self):
-        if self.position.y < 20 or self.position.y > SCREEN_HEIGHT:
+        if self.position.y < 100 or self.position.y > SCREEN_HEIGHT:
             self.y_direction *= -1
         
     def checkx(self):
