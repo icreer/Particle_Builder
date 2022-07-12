@@ -17,7 +17,7 @@ class Spawner():
                 entity_alive[i].move(8)
                 entity_alive[i].checky()
                 entity_alive[i].checkx()
-                entity_alive[i].slow_down_over_time()
+               # entity_alive[i].slow_down_over_time()
             except:
                 pass
         player.draw(self.screen)

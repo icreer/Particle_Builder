@@ -31,8 +31,8 @@ class Player(Entity):
     def checky(self):
         if self.position.y >= SCREEN_HEIGHT - self.radius:
             self.position.y = SCREEN_HEIGHT - self.radius
-        elif self.position.y < self.radius:
-            self.position.y = self.radius
+        elif self.position.y < self.radius + 100:
+            self.position.y = self.radius + 100
 
     def checkx(self):
         if self.position.x >= SCREEN_WIDTH - self.radius:

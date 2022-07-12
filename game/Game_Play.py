@@ -4,7 +4,7 @@ from sys import exit
 from Constants.constants import *
 from game.Player import Player
 from game.Spawner import Spawner
-
+from game.HUD import HUD
 import time
 
 class game_play():
@@ -15,18 +15,23 @@ class game_play():
 
     def start_game_play(self):
         screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+        font = pygame.font.Font("Constants/Fonts/Inter.ttf",32)
         pygame.display.set_caption(TITLE)
         clock = pygame.time.Clock()
-        sprites = pygame.sprite.Sprite()
+        #sprites = pygame.sprite.Sprite()
         entities = []
         player = Player()
         spawner = Spawner(screen)
+        hud = HUD()
+
         while True:
            
-            screen.fill((60,60,60))
+            screen.fill(black)
             
             spawner.spawner(entities)
             spawner.draw_particales(entities, player)
+            hud.draw_hud(screen)
+            hud.items_in_hud(screen,font)
             
             keys = pygame.key.get_pressed()  #checking pressed keys
             if keys[pygame.K_w]:
