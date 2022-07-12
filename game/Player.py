@@ -26,6 +26,7 @@ class Player(Entity):
         self.initialiser(blue)
         self.tag = 'Player'
         self.radius = 15
+       
 
     def checky(self):
         if self.position.y >= SCREEN_HEIGHT - self.radius:

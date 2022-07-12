@@ -20,3 +20,5 @@ class Light(Entity):
         self.tag = "light"
 
         self.radius = 5
+       
+        

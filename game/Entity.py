@@ -12,7 +12,6 @@ This is the base Entity Class.
 class Entity():
     tag = "Default"
     bottom = 0
-
     entity_color = (0, 0, 0)
     sound = 0
     x_direction = random.randrange(-1, 1)
@@ -38,7 +37,23 @@ class Entity():
         
 
     def draw(self, screen):
-        pygame.draw.circle(screen, self.entity_color, (self.position.x, self.position.y), self.radius)
+        print(self.tag)
+        if self.tag =="protons4":
+            
+            self.sprites.image = pygame.image.load("game/Entity_Type/Entity_Images/Protons.png").convert_alpha()
+
+            self.sprites.rect = self.sprites.image.get_rect()
+            self.sprites.image = pygame.transform.scale(self.sprites.image,(int(self.radius * 2), int(self.radius * 2)))
+            screen.blit(self.sprites,(self.position.x,self.position.y))
+        elif self.tag == "electron4":
+            
+            self.sprites.image = pygame.image.load("game/Entity_Type/Entity_Images/Electron.png").convert_alpha()
+
+            self.sprites.rect = self.sprites.image.get_rect()
+            self.sprites.image = pygame.transform.scale(self.sprites.image,(int(self.radius * 2), int(self.radius * 2)))
+            screen.blit(self.sprites,(self.position.x,self.position.y))
+        else:
+            pygame.draw.circle(screen, self.entity_color, (self.position.x, self.position.y), self.radius)
         
     def checky(self):
         if self.position.y < 100 or self.position.y > SCREEN_HEIGHT:

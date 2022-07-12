@@ -20,3 +20,5 @@ class Protons(Entity):
         self.tag = "protons"
 
         self.radius = random.randrange(25, 30)
+        
+        

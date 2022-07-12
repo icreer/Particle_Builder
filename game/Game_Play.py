@@ -17,14 +17,14 @@ class game_play():
         screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
         pygame.display.set_caption(TITLE)
         clock = pygame.time.Clock()
+        sprites = pygame.sprite.Sprite()
         entities = []
         player = Player()
         spawner = Spawner(screen)
         while True:
            
             screen.fill((60,60,60))
-            #pygame.draw.circle(screen,(200,200,0),(100,500),20)
-            #enamy.draw(screen)
+            
             spawner.spawner(entities)
             spawner.draw_particales(entities, player)
             
