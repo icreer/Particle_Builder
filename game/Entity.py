@@ -64,4 +64,4 @@ class Entity():
             self.x_direction *= -1    
 
     def slow_down_over_time(self):
-        self.speed -= .50 * self.sped 
+        self.speed -= .50 * self.speed 
