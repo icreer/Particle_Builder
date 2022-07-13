@@ -37,7 +37,7 @@ class HighScoreMenu():
 class HighScoresData():
     """Class to handle working with the Particle Builder high scores database"""
     def __init__(self):
-        cred = credentials.Certificate("particle_builder_authentication_key.json")
+        cred = credentials.Certificate("main_menu/particle_builder_authentication_key.json")
         firebase_admin.initialize_app(cred, {
             "databaseURL":"https://particle-builder-default-rtdb.firebaseio.com/"
         })
