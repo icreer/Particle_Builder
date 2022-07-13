@@ -23,7 +23,15 @@ class game_play():
         player = Player()
         spawner = Spawner(screen)
         hud = HUD()
+        atomdiction = dict()
+        with open("Constants/Atom list.csv") as atom:
+            for line in atom:
+                Atom_properdy = line.split(",")
+                Atomic_number =  Atom_properdy[0]
+                Chemical_name = Atom_properdy[1]
+                atomdiction[Atomic_number] = Chemical_name
 
+        
         while True:
            
             screen.fill(black)
@@ -31,7 +39,7 @@ class game_play():
             spawner.spawner(entities)
             spawner.draw_particales(entities, player)
             hud.draw_hud(screen)
-            hud.items_in_hud(screen,font)
+            hud.items_in_hud(screen,font, atomdiction)
             
             keys = pygame.key.get_pressed()  #checking pressed keys
             if keys[pygame.K_w]:
