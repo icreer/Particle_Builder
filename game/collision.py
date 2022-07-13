@@ -1,3 +1,14 @@
+
+from types import NoneType
+import pyray
+from raylib.colors import (
+    DARKGRAY,
+    RED,
+    BLACK,
+    GRAY,
+    LIGHTGRAY,
+)
+
 class KDT:
     """
     Implementation of the K-Dimensional Tree (KDT) data structure.  The Node 
@@ -27,6 +38,9 @@ class KDT:
         Initialize an empty KDT.
         """
         self.root = None
+    
+    def get_root(self):
+        return self.root
 
     def insert(self, data):
         """
@@ -180,6 +194,67 @@ class KDT:
                 return 1 + self._get_height(node.right)
 
 
+    #I hate this function specifically
+    def distance_squared(self, data, point2):
+        try:
+            x1, y1 = data.data
+        except:
+            x1, y1 = data
+        try:
+            x2, y2 = point2
+
+        except:
+            x2 = point2
+            y2 = point2           
+
+        dx = x1 - x2
+        dy = y1 - y2
+
+        return dx * dx + dy * dy
+
+    def closer_distance(self, data, p1, p2):
+        if p1 is None:
+            return p2
+        if p2 is None:
+            return p1
+
+        d1 = self.distance_squared(data, p1)
+        d2 = self.distance_squared(data, p2)
+
+        if d1 < d2 and d1 is not 0:
+            return p1
+        elif d2 < d1 and d2 is not 0:
+            return p2
+
+
+    def closest_point(self,data):
+        if self.root is None:
+            return None
+        else:
+            return self._closest_point(self.root, data, 0)
+
+    def _closest_point(self, node, data, axis):
+        
+        try:
+            next_branch = None
+            opposite_branch = None
+
+            if data[axis] < node.data[axis]:
+                next_branch = node.left
+                opposite_branch = node.right
+            else:
+                next_branch = node.right
+                opposite_branch = node.left
+
+            axis = abs(axis - 1)
+            best = self.closer_distance(data, self._closest_point(next_branch, data, axis), node.data)
+
+            if self.distance_squared(data, best) > (data[axis] - node.data[axis]) ** 2:
+                best = self.closer_distance(data, self._closest_point(opposite_branch, data, axis), best)
+
+            return best
+        except:
+            return None
     
 
 
@@ -200,11 +275,10 @@ def create_kdt_from_sorted_list(sorted_list):
     kdt = KDT()  # Create an empty KDT to start with     
     #Make sure that the list has elements in it
     if len(sorted_list) > 0:
-        sorted_list.sort(key = lambda sorted_list:sorted_list[0])
-        _insert_middle(sorted_list, 0, len(sorted_list)-1, kdt, 0)
+        _insert_middle(sorted_list, 0, kdt)
     return kdt
 
-def _insert_middle(sorted_list, first, last, kdt, axis):
+def _insert_middle(sorted_list, axis, kdt):
     """
     This function will attempt to insert the item in the middle
     of 'sorted_list' into the 'KDT' tree.  The middle is 
@@ -232,30 +306,25 @@ def _insert_middle(sorted_list, first, last, kdt, axis):
     using list slicing to create sublists to solve this problem.
 
     """
-    #Finds the index of the middle value
-    middle = (last + first) // 2
-    if (last + first) % 2 == 1:
-        if axis == 0:
-            median = [(sorted_list[middle][axis] + sorted_list[middle + 1][axis]) / 2, 0]
-        else:
-            median = [0,(sorted_list[middle][axis] + sorted_list[middle + 1][axis]) / 2]
-    else:
-        median = sorted_list[middle]
-    
-    kdt.insert(median)
 
-    #first_co and last_co are flawed
+    #need to resort based on axis for every loop, but can only resort the half of the array that is being checked.
+
+    #Finds the index of the middle value
+
     
-    #If there are two elements being compared (i.e [1,2]), then only the first index will be inserted. The if statment rectifies this
-    if middle == last or middle == first:
-        kdt.insert(sorted_list[first])
-        return 0
+    n = len(sorted_list)
+    if n <= 0:
+        return None
+    sorted_list.sort(key = lambda sorted_list:sorted_list[axis])
+    median = n // 2
+    kdt.insert(sorted_list[median])
+
+
     
     axis = abs(axis - 1)
     #recursion
     #left branch
-    #last_co shouldn't be 900 or 0
-    _insert_middle(sorted_list, first, middle - 1, kdt, axis)
+    _insert_middle(sorted_list[:median], axis, kdt)
     #right branch
-    _insert_middle(sorted_list, middle + 1, last, kdt, axis)
+    _insert_middle(sorted_list[median + 1:], axis, kdt)
     return kdt
