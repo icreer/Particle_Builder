@@ -4,6 +4,8 @@ import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import db
 
+from Constants.constants import SCREEN_HEIGHT, SCREEN_WIDTH
+
 class HighScoreMenu():
     def __init__(self,close_function):
         self.close_function = close_function
@@ -13,8 +15,8 @@ class HighScoreMenu():
         self.high_score_list = high_scores_data.display_top_ten()
 
     def show_high_scores(self):
-        self.high_score_surface = pygame.display.set_mode((600,800))
-        self.high_score_screen = pygame_menu.Menu("Highscores",600,800,onclose=self.close)
+        self.high_score_surface = pygame.display.set_mode((SCREEN_WIDTH,SCREEN_HEIGHT))
+        self.high_score_screen = pygame_menu.Menu("Highscores",SCREEN_WIDTH,SCREEN_HEIGHT,onclose=self.close)
         self.high_score_screen.add.label("Highscores:")
 
 

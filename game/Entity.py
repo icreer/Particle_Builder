@@ -56,12 +56,31 @@ class Entity():
             pygame.draw.circle(screen, self.entity_color, (self.position.x, self.position.y), self.radius)
         
     def checky(self):
-        if self.position.y < 100 or self.position.y > SCREEN_HEIGHT:
+        if self.position.y < 100 + self.radius or self.position.y > SCREEN_HEIGHT - self.radius:
             self.y_direction *= -1
         
     def checkx(self):
-        if self.position.x < 0 or self.position.x > SCREEN_WIDTH:
+        if self.position.x < 0 + self.radius or self.position.x > SCREEN_WIDTH - self.radius:
             self.x_direction *= -1    
 
     def slow_down_over_time(self):
-        self.speed -= .50 * self.speed 
+        if self.tag == "light":
+            self.speed -= 1e-3 * self.speed
+        elif self.tag == "protons":
+            self.speed -= .001 * self.speed
+        elif self.tag == "electron":
+            self.speed -= .001 * self.speed 
+
+    def check_speed(self):
+        if self.speed <= 0.5:
+            self.speed = 0
+            self.radius -= .25 * self.radius 
+
+    def check_size(self):
+        if self.radius <= 1:
+            return True
+        else:
+            return False
+
+    def remove_entity(self, entities_alive, remove_index):
+        entities_alive.pop(remove_index)

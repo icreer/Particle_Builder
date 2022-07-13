@@ -13,7 +13,7 @@ class Light(Entity):
         self.speed =  2
         self.position = Vector2()
         self.position.x = random.randrange(0, SCREEN_WIDTH)
-        self.position.y = random.randrange(100, SCREEN_HEIGHT)
+        self.position.y = random.randrange(105, SCREEN_HEIGHT)
 
         self.initialiser((255, 255, 0))
 
