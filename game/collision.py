@@ -1,8 +1,4 @@
 
-from types import NoneType
-import pyray
-
-
 class KDT:
     """
     Implementation of the K-Dimensional Tree (KDT) data structure.  The Node 
@@ -215,9 +211,9 @@ class KDT:
         d1 = self.distance_squared(data, p1)
         d2 = self.distance_squared(data, p2)
 
-        if d1 < d2 and d1 is not 0:
+        if d1 < d2 and d1 != 0:
             return p1
-        elif d2 < d1 and d2 is not 0:
+        elif d2 < d1 and d2 != 0:
             return p2
 
 
