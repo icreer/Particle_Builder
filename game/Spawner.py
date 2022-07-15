@@ -26,7 +26,6 @@ class Spawner():
                 entity_alive[i].slow_down_over_time()
                 entity_alive[i].check_speed()
                 entity_alive[i].entity_position(particale_position,i)
-                print(particale_position)
                 remove_particale = entity_alive[i].check_size()
                 if remove_particale:
                     entity_alive[i].remove_entity(entity_alive,i, particale_position)
