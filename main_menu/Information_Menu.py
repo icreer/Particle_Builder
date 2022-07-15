@@ -16,9 +16,9 @@ class InformationMenu():
         self.information_surface = pygame.display.set_mode((SCREEN_WIDTH,SCREEN_HEIGHT))
 
         self.information_menu = pygame_menu.Menu("Information",SCREEN_WIDTH,SCREEN_HEIGHT,onclose=self.close)
-        self.information_menu.add.label("Here's some information")
-        for line in ["The particle builder is a game ",
-                    "that is a mash-up of asteroid and 2048. "
+        self.information_menu.add.label("GAME INFORMATION")
+        for line in ["\nThe particle builder is a game that is  ",
+                    "a mash-up of asteroid and 2048. "
                     ,"The overall goal is to build"
                     ,"largest stable atom that you can."
                     ,"Witch is a debated topic but "
@@ -41,7 +41,7 @@ class InformationMenu():
                     "and have fun learning!\n\n"]:
             self.information_menu.add.label(line)
 
-        self.information_menu.add.button("Back to Main Menu",self.close)
+        self.information_menu.add.button("Back to Main Menu", self.close)
         """
         The player can just press the x to go back to the main menu
         """
