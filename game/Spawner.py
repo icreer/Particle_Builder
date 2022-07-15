@@ -37,13 +37,11 @@ class Spawner():
     def timer(self,dt):
         self.time_elaspe = dt
 
-    def spawner_start(self, entities_alive):
-        random_int = random.randint(0,2)
-        if len(entities_alive) < 8:
-            if random_int != 1:
-                entity = Up_Quarks()
-            elif random_int == 1:
-                entity = Down_Quarks()
+    def spawner_start(self, entities_alive): 
+        if len(entities_alive) < 2:   
+            entity = Up_Quarks()
+            entities_alive.append(entity)   
+            entity = Down_Quarks()
             entities_alive.append(entity)        
 
     def spawner_main(self, entities_alive):

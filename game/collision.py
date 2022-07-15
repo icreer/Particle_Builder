@@ -348,16 +348,22 @@ def check_collision(player, coordinate_array, entity_array):
     return entity_array
 
 def check_if_collison_is_with_player(check, collision, player, entities):
-        if collision == player.get_coordinates():
-            for entity in entities:
-                if entity.get_coordinates() == check:
-                    player.charge += entity.charge
-                    if entity.tag == "Light":
-                        radius = player.get_radius()
-                        player.set_radius(radius * .5)
-                    else:
-                        radius = player.get_radius()
-                        player.set_radius(radius + (entity.get_radius() * .05))
-
+    if collision == player.get_coordinates():
+        for entity in entities:
+            if entity.get_coordinates() == check:
+                player.charge += entity.charge
+                if entity.tag == "Light":
+                    radius = player.get_radius()
+                    player.set_radius(radius * .5)
+                    
+                elif entity.tag == "protons":
+                    radius = player.get_radius()
+                    player.set_radius(radius + (entity.get_radius() * .05))
+                    player.proton_count += 1
+                else:
+                    radius = player.get_radius()
+                    player.set_radius(radius + (entity.get_radius() * .05))
+                    
+    
 
     

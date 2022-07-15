@@ -33,7 +33,7 @@ class Menu():
         new_information_menu.show_information()
 
     def open_high_scores(self):
-        """Method for opening the high scores window"""
+        """Method for opening the high scores window""" 
         
         self.high_scores_session.show_high_scores()
         

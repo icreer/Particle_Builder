@@ -29,6 +29,7 @@ class game_play():
         hud = HUD(self.top_score)
         atomdiction = dict()
         gamestate = 0
+        
         with open("Constants/Atom list.csv") as atom:
             for line in atom:
                 Atom_properdy = line.split(",")
@@ -43,7 +44,7 @@ class game_play():
             
             if gamestate == 0:
                 spawner.spawner_start(entities)
-                if player.charge > .95 :
+                if player.charge > .95  and player.charge < 1.05:
                     gamestate = 1
             else:
                 spawner.spawner_main(entities)

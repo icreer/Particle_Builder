@@ -10,9 +10,13 @@ class HUD():
         pygame.draw.rect(screen,gray,pygame.Rect(0,0,SCREEN_WIDTH,100))
 
     def items_in_hud(self,screen, font, atomdiction, player):
+        try:
+            particle_type = atomdiction[str(player.proton_count)]
+        except: 
+            particle_type = "Unkown"
         charge = font.render("Charge: " + str(round(player.charge, 2)), True, white)
-        type_of_particale = font.render("Particle Type: " + str(atomdiction["3"]), True, white)
-        number_of_protons = font.render("Proton Count: " + str(int(0)), True, white)
+        type_of_particale = font.render("Particle Type: " + str(particle_type), True, white)
+        number_of_protons = font.render("Proton Count: " + str(player.proton_count), True, white)
         high_score = font.render("High Score: "+ str(self.top_score), True, white)
         screen.blit(type_of_particale,(10,10))
         screen.blit(charge,(500,10))
