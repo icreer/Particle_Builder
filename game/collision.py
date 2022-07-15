@@ -315,8 +315,7 @@ def _insert_middle(sorted_list, axis, kdt):
 
 def check_collision(player, coordinate_array, entity_array):
 
-    entity_array.append(player)
-    coordinate_array.append(player.get_coordinates())
+    
     tree = create_kdt_from_sorted_list(coordinate_array)
     tree.insert(player.get_coordinates())
     
@@ -325,6 +324,13 @@ def check_collision(player, coordinate_array, entity_array):
         radius = entity.get_radius()
         collision = tree.closest_point(check)
         if abs(check[0] - collision[0]) < radius and abs(check[1] - collision[1]) < radius:
+            entity.set_radius(radius + 1)
+            entity_array.remove(entity)
+
+    check = player.get_coordinates()
+    collision = tree.closest_point(check)
+    radius = player.get_radius()
+    if abs(check[0] - collision[0]) < radius and abs(check[1] - collision[1]) < radius:
             entity.set_radius(radius + 1)
             entity_array.remove(entity)
     return entity_array
