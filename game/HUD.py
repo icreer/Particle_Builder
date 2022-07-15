@@ -8,8 +8,8 @@ class HUD():
         pygame.draw.rect(screen,gray,pygame.Rect(0,0,SCREEN_WIDTH,100))
 
     def items_in_hud(self,screen, font, atomdiction):
-        charge = font.render("Charge:" + str(int(0.0)), True, white)
-        type_of_particale = font.render("Partical type: " + str(atomdiction["2"]), True, white)
+        charge = font.render("Charge: " + str(int(0.0)), True, white)
+        type_of_particale = font.render("Particle type: " + str(atomdiction["2"]), True, white)
         number_of_protons = font.render("Proton Count: " + str(int(1.0)), True, white)
         high_score = font.render("High Score: "+ str(), True, white)
         screen.blit(type_of_particale,(10,10))

@@ -1,13 +1,7 @@
 
 from types import NoneType
 import pyray
-from raylib.colors import (
-    DARKGRAY,
-    RED,
-    BLACK,
-    GRAY,
-    LIGHTGRAY,
-)
+
 
 class KDT:
     """

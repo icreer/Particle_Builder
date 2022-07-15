@@ -5,6 +5,7 @@ from game.Entity_Type.Electron import Electron
 import random
 from game.Entity_Type.Protons import Protons
 from game.Entity_Type.Light import Light
+from game.collision import KDT
 
 class Spawner():
     def __init__(self,screen):
