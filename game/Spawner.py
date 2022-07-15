@@ -65,5 +65,11 @@ class Spawner():
 
     def remove_entity(self, entities_alive, remove_index):
         entities_alive.pop(remove_index)
+
+    
+
+                
+
+
     
    

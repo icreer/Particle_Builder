@@ -331,12 +331,24 @@ def check_collision(player, coordinate_array, entity_array):
         collision = tree.closest_point(check)
         #This if statement checks the closest neighbor to the current object, and if their radi overlap, they collide.
         if abs(check[0] - collision[0]) < radius and abs(check[1] - collision[1]) < radius:
+            check_if_collison_is_with_player(check,collision,player,entity_array)
             entity.set_radius(radius + 1)
             entity_array.remove(entity)
             coordinate_array.remove(entity.get_coordinates())
 
     return entity_array
 
+def check_if_collison_is_with_player(check, collision, player, entities):
+        if collision == player.get_coordinates():
+            for entity in entities:
+                if entity.get_coordinates() == check:
+                    player.charge += entity.charge
+                    if entity.tag == "Light":
+                        radius = player.get_radius()
+                        player.set_radius(radius * .5)
+                    else:
+                        radius = player.get_radius()
+                        player.set_radius(radius + (entity.get_radius() * .25))
 
 
     
