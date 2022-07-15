@@ -43,6 +43,8 @@ class game_play():
             
             if gamestate == 0:
                 spawner.spawner_start(entities)
+                if player.charge < .95 and player.charge > 1.03:
+                    gamestate = 1
             else:
                 spawner.spawner_main(entities)
 

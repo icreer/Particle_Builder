@@ -26,7 +26,6 @@ class Spawner():
                 entity_alive[i].slow_down_over_time()
                 entity_alive[i].check_speed()
                 entity_alive[i].entity_position(particale_position,i)
-                #print(particale_position)
                 remove_particale = entity_alive[i].check_size()
                 if remove_particale:
                     entity_alive[i].remove_entity(entity_alive,i, particale_position)
@@ -49,12 +48,14 @@ class Spawner():
 
     def spawner_main(self, entities_alive):
         
-        random_int = random.randint(0, 2)
+        random_int = random.randint(0, 5)
         if len(entities_alive) < 10:
             if random_int == 0:
                 entity = Electron()
             elif random_int == 1:
-                entity = Light()  
+                entity = Light() 
+            elif random_int == 2:
+                entity = Neutron() 
             else:
                 entity = Protons()
                 
