@@ -24,6 +24,7 @@ class game_play():
         spawner = Spawner(screen)
         hud = HUD()
         atomdiction = dict()
+        gamestate = 0
         with open("Constants/Atom list.csv") as atom:
             for line in atom:
                 Atom_properdy = line.split(",")
@@ -36,7 +37,12 @@ class game_play():
            
             screen.fill(black)
             
-            spawner.spawner(entities)
+            if gamestate == 0:
+                spawner.spawner_start(entities)
+            else:
+                spawner.spawner_main(entities)
+
+                
             spawner.draw_particales(entities, player)
             hud.draw_hud(screen)
             hud.items_in_hud(screen,font, atomdiction)
