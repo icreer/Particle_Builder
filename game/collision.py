@@ -299,7 +299,7 @@ def _insert_middle(sorted_list, axis, kdt):
     n = len(sorted_list)
     if n <= 0:
         return None
-    sorted_list.sort(key = lambda sorted_list:sorted_list.get_coordinates()[axis])
+    sorted_list.sort(key = lambda sorted_list:sorted_list[axis])
     median = n // 2
     kdt.insert(sorted_list[median])
 
