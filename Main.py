@@ -1,8 +1,8 @@
 import pygame
 import pygame_menu
 from sys import exit
-from main_menu.High_Score import HighScores
-from main_menu.Information_Menu import InformationMenu
+from Main_Menu.High_Score import HighScores
+from Main_Menu.Information_Menu import InformationMenu
 from game.Game_Play import game_play
 from Constants.constants import *
 

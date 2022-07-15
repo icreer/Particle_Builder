@@ -56,7 +56,6 @@ class Entity():
             pygame.draw.circle(screen, self.entity_color, (self.position.x, self.position.y), self.radius)
         
     def checky(self):
-        if self.position.y < 100 or self.position.y > SCREEN_HEIGHT:
         if self.position.y < 100 + self.radius or self.position.y > SCREEN_HEIGHT - self.radius:
             self.y_direction *= -1
         
@@ -89,7 +88,7 @@ class Entity():
     def remove_entity(self, entities_alive, remove_index, position):
         entities_alive.pop(remove_index)
         position.pop(remove_index)
-        print(position)
+        
     def entity_position(self, position, index):
         position[index] = [self.position.x, self.position.y]
 
