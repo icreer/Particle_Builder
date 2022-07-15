@@ -24,6 +24,9 @@ blue = (0,0,255)
 black = (0,0,0)
 white = (255,255,255)
 
+SkyBlue = (115,217,238)
+LightGreen = (119,238,115)
+
 """
 Player
 """
