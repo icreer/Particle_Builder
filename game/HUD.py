@@ -11,7 +11,7 @@ class HUD():
 
     def items_in_hud(self,screen, font, atomdiction, player):
         charge = font.render("Charge: " + str(round(player.charge, 2)), True, white)
-        type_of_particale = font.render("Particle Type: " + str(atomdiction["2"]), True, white)
+        type_of_particale = font.render("Particle Type: " + str(atomdiction["3"]), True, white)
         number_of_protons = font.render("Proton Count: " + str(int(0)), True, white)
         high_score = font.render("High Score: "+ str(self.top_score), True, white)
         screen.blit(type_of_particale,(10,10))
