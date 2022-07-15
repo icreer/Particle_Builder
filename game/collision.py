@@ -1,19 +1,8 @@
 
-from types import NoneType
-import pyray
-from raylib.colors import (
-    DARKGRAY,
-    RED,
-    BLACK,
-    GRAY,
-    LIGHTGRAY,
-)
-
 class KDT:
     """
     Implementation of the K-Dimensional Tree (KDT) data structure.  The Node 
-    class below is an inner class.  An inner class means that its real 
-    name is related to the outer class.  To create a Node object, we will 
+    class below is an inner class. To create a Node object, we will 
     need to specify KDT.Node
     """
 
@@ -35,7 +24,7 @@ class KDT:
 
     def __init__(self):
         """
-        Initialize an empty KDT.
+        Initializes an empty KDT.
         """
         self.root = None
     
@@ -194,7 +183,6 @@ class KDT:
                 return 1 + self._get_height(node.right)
 
 
-    #I hate this function specifically
     def distance_squared(self, data, point2):
         try:
             x1, y1 = data.data
@@ -221,9 +209,9 @@ class KDT:
         d1 = self.distance_squared(data, p1)
         d2 = self.distance_squared(data, p2)
 
-        if d1 < d2 and d1 is not 0:
+        if (d1 < d2 and d1 != 0) or d2 == 0:
             return p1
-        elif d2 < d1 and d2 is not 0:
+        else:
             return p2
 
 
@@ -307,15 +295,11 @@ def _insert_middle(sorted_list, axis, kdt):
 
     """
 
-    #need to resort based on axis for every loop, but can only resort the half of the array that is being checked.
-
-    #Finds the index of the middle value
-
     
     n = len(sorted_list)
     if n <= 0:
         return None
-    sorted_list.sort(key = lambda sorted_list:sorted_list[axis])
+    sorted_list.sort(key = lambda sorted_list:sorted_list.get_coordinates()[axis])
     median = n // 2
     kdt.insert(sorted_list[median])
 
@@ -328,3 +312,24 @@ def _insert_middle(sorted_list, axis, kdt):
     #right branch
     _insert_middle(sorted_list[median + 1:], axis, kdt)
     return kdt
+
+def check_collision(player, coordinate_array, entity_array):
+
+    entity_array.append(player)
+    coordinate_array.append(player.get_coordinates())
+    tree = create_kdt_from_sorted_list(coordinate_array)
+    tree.insert(player.get_coordinates())
+    
+    for entity in entity_array:
+        check = entity.get_coordinates()
+        radius = entity.get_radius()
+        collision = tree.closest_point(check)
+        if abs(check[0] - collision[0]) < radius and abs(check[1] - collision[1]) < radius:
+            entity.set_radius(radius + 1)
+            entity_array.remove(entity)
+    return entity_array
+
+
+    #need to be able to access the entity, so that i can delete it, and change the radius appropriately
+
+    

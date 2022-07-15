@@ -65,3 +65,12 @@ class Entity():
 
     def slow_down_over_time(self):
         self.speed -= .50 * self.speed 
+
+    def get_radius(self):
+        return self.radius
+
+    def set_radius(self, new_radius):
+        self.radius = new_radius
+        
+    def get_coordinates(self):
+        return [self.position.x, self.position.y]

@@ -6,6 +6,7 @@ from game.Player import Player
 from game.Spawner import Spawner
 from game.HUD import HUD
 import time
+from game.collision import check_collision
 
 class game_play():
     def calculate_deltatime(self):
@@ -40,7 +41,13 @@ class game_play():
             spawner.draw_particales(entities, player)
             hud.draw_hud(screen)
             hud.items_in_hud(screen,font, atomdiction)
-            
+
+            coordinates = []
+            for entity in entities:
+                coordinates.append(entity.get_coordinates())
+            entities = check_collision(player, coordinates, entities)
+
+
             keys = pygame.key.get_pressed()  #checking pressed keys
             if keys[pygame.K_w]:
                 player.move_up()
