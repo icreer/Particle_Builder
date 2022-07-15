@@ -1,7 +1,7 @@
 import pygame
 import pygame_menu
 from sys import exit
-from Main_Menu.High_Score import HighScores
+from Main_Menu.High_Score import HighScoreMenu
 from Main_Menu.Information_Menu import InformationMenu
 from game.Game_Play import game_play
 from Constants.constants import *
@@ -19,27 +19,30 @@ class Menu():
         self.menu.add.button("Play",self.start_game)
         self.menu.add.button("Instructions",self.show_information)
         self.menu.add.button("Highscores",self.open_high_scores)
+        self.high_scores_session = HighScoreMenu(self.open_menu)
+        self.top_score = self.high_scores_session.get_top_score()
+
         self.menu.add.button("Exit",pygame_menu.events.EXIT)
 
         self.menu.mainloop(self.main_surface)
         pygame.display.update()
 
-    def start_game(self):
-        """Method called when the user hits 'play' in main menu"""
-        print("Place holder for game start")
-        game_session = game_play()
-        game_session.start_game_play()
-
     def show_information(self):
         """Method for opening the information window"""
-        new_information_menu = InformationMenu()
+        new_information_menu = InformationMenu(self.open_menu)
         new_information_menu.show_information()
 
     def open_high_scores(self):
         """Method for opening the high scores window"""
-        high_scores_session = HighScores()
-        high_scores_session.open_window()
+        
+        self.high_scores_session.show_high_scores()
+        
 
+    def start_game(self):
+        """Method called when the user hits 'play' in main menu"""
+        game_session = game_play(self.top_score)
+        game_session.start_game_play()
+        
 
 #Create instance of begin_game menu class
 new_menu = Menu()

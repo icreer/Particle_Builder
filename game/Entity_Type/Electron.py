@@ -14,12 +14,13 @@ class Electron(Entity):
         self.speed = 1.5
         self.position = Vector2()
         self.position.x = random.randrange(0, SCREEN_WIDTH)
-        self.position.y = random.randrange(100,SCREEN_HEIGHT)
+        self.position.y = random.randrange(120,SCREEN_HEIGHT)
 
         self.initialiser((0, 255, 0))
 
         self.tag = "electron"
 
         self.radius = random.randrange(10, 20)
+        self.charge = -1
         
        

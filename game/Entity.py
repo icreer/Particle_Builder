@@ -59,12 +59,12 @@ class Entity():
         if self.position.y < 100 + self.radius or self.position.y > SCREEN_HEIGHT - self.radius:
             self.y_direction *= -1
         
+        
     def checkx(self):
-        if self.position.x < 0 or self.position.x > SCREEN_WIDTH:
+        if self.position.x < 0 + self.radius or self.position.x > SCREEN_WIDTH - self.radius:
             self.x_direction *= -1    
-
+        
     def slow_down_over_time(self):
-        self.speed -= .50 * self.speed 
         if self.tag == "light":
             self.speed -= 1e-3 * self.speed
         elif self.tag == "protons":
@@ -100,4 +100,5 @@ class Entity():
         self.radius = new_radius
         
     def get_coordinates(self):
-        return [self.position.x, self.position.y]        
+        return [self.position.x, self.position.y]
+        

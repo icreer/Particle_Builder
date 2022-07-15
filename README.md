@@ -2,7 +2,7 @@
 
 # Overview
 
-The particle builder is a game that is a mash-up of asteroid and 2048. 
+The particle builder is a game that is a mash-up of asteroid in 2048. 
 The overall goal is to build largest stable atom that you can. Witch is a 
 debated topic but in nature is Uranium with a atomic number of 92. The 
 challenge of the game is building up to Uranium from a single up quark. As 
