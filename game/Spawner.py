@@ -12,7 +12,7 @@ class Spawner():
         self.screen = screen
 
     def draw_particales(self, entity_alive, player):
-        
+        particales_position_list = []
         for i in range(len(entity_alive)):
             try:
                 remove_particale = False
