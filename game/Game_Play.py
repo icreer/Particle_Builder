@@ -8,6 +8,9 @@ from game.HUD import HUD
 import time
 
 class game_play():
+    def __init__(self,top_score):
+        self.top_score = top_score
+
     def calculate_deltatime(self):
         self.dt = time.time() - self.previous_frame_time
         self.dt *= 60
@@ -22,7 +25,7 @@ class game_play():
         entities = []
         player = Player()
         spawner = Spawner(screen)
-        hud = HUD()
+        hud = HUD(self.top_score)
         atomdiction = dict()
         gamestate = 0
         with open("Constants/Atom list.csv") as atom:

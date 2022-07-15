@@ -9,10 +9,11 @@ from Constants.constants import SCREEN_HEIGHT, SCREEN_WIDTH
 class HighScoreMenu():
     def __init__(self,close_function):
         self.close_function = close_function
+        self.high_scores_data = HighScoresData()
     """Class for accessing and displaying all previous high scores"""
     def retrieve_high_scores(self):
-        high_scores_data = HighScoresData()
-        self.high_score_list = high_scores_data.display_top_ten()
+        
+        self.high_score_list = self.high_scores_data.display_top_ten()
 
     def show_high_scores(self):
         self.high_score_surface = pygame.display.set_mode((SCREEN_WIDTH,SCREEN_HEIGHT))
@@ -29,6 +30,9 @@ class HighScoreMenu():
         self.high_score_screen.add.button("Back",self.close)
         self.high_score_screen.mainloop(self.high_score_surface)
     
+    def get_top_score(self):
+        return self.high_scores_data.top_ten_ref.child("1").get().get("score")
+               
 
     def close(self):
         self.close_function()
