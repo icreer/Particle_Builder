@@ -39,9 +39,9 @@ class Spawner():
         self.time_elaspe = dt
 
     def spawner_start(self, entities_alive):
-        random_int = random.randint(0,1)
+        random_int = random.randint(0,2)
         if len(entities_alive) < 8:
-            if random_int == 0:
+            if random_int != 1:
                 entity = Up_Quarks()
             elif random_int == 1:
                 entity = Down_Quarks()

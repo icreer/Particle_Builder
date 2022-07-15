@@ -71,6 +71,8 @@ class Entity():
             self.speed -= .001 * self.speed
         elif self.tag == "electron":
             self.speed -= .001 * self.speed 
+        else:
+            self.speed -= .001 * self.speed 
 
     def check_speed(self):
         if self.speed <= 0.5:

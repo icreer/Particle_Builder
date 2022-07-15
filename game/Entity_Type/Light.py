@@ -20,5 +20,6 @@ class Light(Entity):
         self.tag = "light"
 
         self.radius = 5
+        self.charge = 0
        
         

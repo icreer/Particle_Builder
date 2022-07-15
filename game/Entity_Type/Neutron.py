@@ -12,12 +12,13 @@ class Neutron(Entity):
     def __init__(self):
         self.speed =  1
         self.position = Vector2()
-        self.position.x = random.randrange(0, SCREEN_WIDTH)
-        self.position.y = random.randrange(105, SCREEN_HEIGHT)
+        self.position.x = random.randrange(30, SCREEN_WIDTH-30)
+        self.position.y = random.randrange(130, SCREEN_HEIGHT-30)
 
         self.initialiser(white)
 
         self.tag = "Neutron"
 
-        self.radius = 5
+        self.radius = random.randrange(25,30)
+        self.charge = 0
        

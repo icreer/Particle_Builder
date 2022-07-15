@@ -12,12 +12,13 @@ class Down_Quarks(Entity):
     def __init__(self):
         self.speed =  1.2
         self.position = Vector2()
-        self.position.x = random.randrange(0, SCREEN_WIDTH)
-        self.position.y = random.randrange(105, SCREEN_HEIGHT)
+        self.position.x = random.randrange(15, SCREEN_WIDTH - 15)
+        self.position.y = random.randrange(115, SCREEN_HEIGHT - 15)
 
-        self.initialiser(green)
+        self.initialiser(LightGreen)
 
         self.tag = "Down_Quarks"
 
         self.radius = 15
+        self.charge = -1/3
        

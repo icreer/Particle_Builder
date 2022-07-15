@@ -21,5 +21,6 @@ class Electron(Entity):
         self.tag = "electron"
 
         self.radius = random.randrange(10, 20)
+        self.charge = -1
         
        

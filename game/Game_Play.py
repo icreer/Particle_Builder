@@ -42,10 +42,10 @@ class game_play():
             else:
                 spawner.spawner_main(entities)
 
-                
+
             spawner.draw_particales(entities, player)
             hud.draw_hud(screen)
-            hud.items_in_hud(screen,font, atomdiction)
+            hud.items_in_hud(screen,font, atomdiction,player)
             
             keys = pygame.key.get_pressed()  #checking pressed keys
             if keys[pygame.K_w]:
