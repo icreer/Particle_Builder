@@ -313,9 +313,15 @@ def _insert_middle(sorted_list, axis, kdt):
     _insert_middle(sorted_list[median + 1:], axis, kdt)
     return kdt
 
+
+
 def check_collision(player, coordinate_array, entity_array):
 
-    
+    ''' 
+    The player is not in entity list, but the entity that collides with the player is.
+    This function creates a kdtree from the array of coordinates in order to save on 
+    processing time.
+    '''
     tree = create_kdt_from_sorted_list(coordinate_array)
     tree.insert(player.get_coordinates())
     
@@ -323,19 +329,14 @@ def check_collision(player, coordinate_array, entity_array):
         check = entity.get_coordinates()
         radius = entity.get_radius()
         collision = tree.closest_point(check)
+        #This if statement checks the closest neighbor to the current object, and if their radi overlap, they collide.
         if abs(check[0] - collision[0]) < radius and abs(check[1] - collision[1]) < radius:
             entity.set_radius(radius + 1)
             entity_array.remove(entity)
+            coordinate_array.remove(entity.get_coordinates())
 
-    check = player.get_coordinates()
-    collision = tree.closest_point(check)
-    radius = player.get_radius()
-    if abs(check[0] - collision[0]) < radius and abs(check[1] - collision[1]) < radius:
-            entity.set_radius(radius + 1)
-            entity_array.remove(entity)
     return entity_array
 
 
-    #need to be able to access the entity, so that i can delete it, and change the radius appropriately
 
     

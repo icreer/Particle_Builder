@@ -47,15 +47,21 @@ class game_play():
                 spawner.spawner_main(entities)
 
 
-            spawner.draw_particales(entities, player)
-            hud.draw_hud(screen)
-            hud.items_in_hud(screen,font, atomdiction, player)
 
             coordinates = []
             for entity in entities:
                 coordinates.append(entity.get_coordinates())
             entities = check_collision(player, coordinates, entities)
 
+            spawner.draw_particales(entities, player)
+            hud.draw_hud(screen)
+            hud.items_in_hud(screen,font, atomdiction, player)
+
+            
+            coordinates = []
+            for entity in entities:
+                coordinates.append(entity.get_coordinates())
+            entities = check_collision(player, coordinates, entities)
 
             keys = pygame.key.get_pressed()  #checking pressed keys
             if keys[pygame.K_w]:
