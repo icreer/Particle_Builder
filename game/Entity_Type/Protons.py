@@ -13,12 +13,13 @@ class Protons(Entity):
         self.speed = 1
         self.position = Vector2()
         self.position.x = random.randrange(0, SCREEN_WIDTH)
-        self.position.y = random.randrange(100, SCREEN_HEIGHT)
+        self.position.y = random.randrange(130, SCREEN_HEIGHT)
 
         self.initialiser((255, 0, 0))
 
         self.tag = "protons"
 
         self.radius = random.randrange(25, 30)
+        self.charge = 1
         
         

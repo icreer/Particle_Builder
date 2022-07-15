@@ -25,7 +25,8 @@ class Player(Entity):
         self.speed = 0
         self.initialiser(blue)
         self.tag = 'Player'
-        self.radius = 15
+        self.radius = 15 
+        self.charge = 2/3
        
 
     def checky(self):
