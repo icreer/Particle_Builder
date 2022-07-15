@@ -325,14 +325,23 @@ def check_collision(player, coordinate_array, entity_array):
     tree = create_kdt_from_sorted_list(coordinate_array)
     tree.insert(player.get_coordinates())
     
+
+    #Currently the player is not in the entity array or the coordinate array
+
+
+
     for entity in entity_array:
         check = entity.get_coordinates()
         radius = entity.get_radius()
         collision = tree.closest_point(check)
+        try:
+            index = entity_array.index(collision)
+            second_radius = entity_array[index].get_radius() - 10
+        except:
+            second_radius = player.get_radius() - 10
         #This if statement checks the closest neighbor to the current object, and if their radi overlap, they collide.
-        if abs(check[0] - collision[0]) < radius and abs(check[1] - collision[1]) < radius:
+        if abs(check[0] - collision[0]) < (radius + second_radius) and abs(check[1] - collision[1]) < (radius + second_radius):
             check_if_collison_is_with_player(check,collision,player,entity_array)
-            entity.set_radius(radius + 1)
             entity_array.remove(entity)
             coordinate_array.remove(entity.get_coordinates())
 
