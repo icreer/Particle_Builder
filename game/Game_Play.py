@@ -27,7 +27,7 @@ class game_play():
         with open("Constants/Atom list.csv") as atom:
             for line in atom:
                 Atom_properdy = line.split(",")
-                Atomic_number =  Atom_properdy[0]
+                Atomic_number = Atom_properdy[0]
                 Chemical_name = Atom_properdy[1]
                 atomdiction[Atomic_number] = Chemical_name
 
