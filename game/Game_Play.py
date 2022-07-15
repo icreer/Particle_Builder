@@ -60,10 +60,6 @@ class game_play():
             hud.items_in_hud(screen,font, atomdiction, player)
 
             
-            coordinates = []
-            for entity in entities:
-                coordinates.append(entity.get_coordinates())
-            entities = check_collision(player, coordinates, entities)
 
             keys = pygame.key.get_pressed()  #checking pressed keys
             if keys[pygame.K_w]:
