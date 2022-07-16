@@ -106,7 +106,7 @@ class HighScoresData():
                 new_user = current_place_user
 
     def update_top_ten(self,new_score,new_user):
-        """Function to check if a new score belongs on the top 10 list. 
+        """Function to check if a new score belongs on the top 10 list.
         If it does, this function places that score in the list"""
         in_top_ten = False
         for i in range(1,11):
@@ -119,7 +119,7 @@ class HighScoresData():
                 
         if not in_top_ten:
             print("That score didn't make it")
-            #self.update_top_100(new_score,new_user)
+            self.update_top_100(new_score,new_user)
             return in_top_ten
 
     def update_top_100(self,new_score,new_user):
@@ -184,3 +184,6 @@ class HighScoresData():
                 "score": "0",
                 "user": " "
             })
+
+    def check_in_high_scores(self,score):
+        return score < float(self.top_100_ref.child("100").get().get("score"))

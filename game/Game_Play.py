@@ -1,4 +1,5 @@
 import pygame
+import pygame_menu
 from sys import exit
 from Constants.constants import *
 from game.Player import Player
@@ -8,24 +9,25 @@ from main_menu.High_Score import HighScoresData
 import time
 from game.collision import check_collision
 
-
 """
 The Game play class deals the main game play. All of the game play really happens inside
 of the start game play fucntion. The game play fuction uses stuff from the Player, Spawner
 , collision and HUD classes.
 """
 class game_play():
-    def __init__(self,top_score):
+    def __init__(self,top_score,highscore_session,back_to_menu_function):
         self.top_score = top_score
+        self.highscores_session = highscore_session
+        self.back_to_menu_function = back_to_menu_function
 
 # This is the magic fuction that runs the game
     def start_game_play(self):
         screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-        font = pygame.font.Font("Constants/Fonts/Inter.ttf",32)
+        self.font = pygame.font.Font("Constants/Fonts/Inter.ttf",32)
         pygame.display.set_caption(TITLE)
         self.clock = pygame.time.Clock()
         #sprites = pygame.sprite.Sprite()
-        start_game_time = time.time()
+        self.start_game_time = time.time()
         entities = []
         player = Player()
         spawner = Spawner(screen)
@@ -62,7 +64,7 @@ class game_play():
 
             spawner.draw_particales(entities, player)
             hud.draw_hud(screen)
-            hud.items_in_hud(screen,font, atomdiction, player)
+            hud.items_in_hud(screen,self.font, atomdiction, player)
 
             
 
@@ -93,17 +95,17 @@ class game_play():
             pygame.display.update()
             self.clock.tick(60)
 
-        end_game(start_game_time, font, self.top_score)
+        self.end_game_V2()
 
 
     def end_game_V2(self):
         
         end_of_game = time.time()
-        self.total_time = end_of_game - self.start_of_game
+        self.total_time = end_of_game - self.start_game_time
         print()
         print(type(self.total_time))
-        #if self.highscores_session.high_scores_data.check_in_high_scores(self.total_time):
-        if 1 == 2:
+        if self.highscores_session.high_scores_data.check_in_high_scores(self.total_time):
+       
             #Open menu to add new high score name and score itself'
             high_score_input_surface = pygame.display.set_mode((SCREEN_WIDTH,SCREEN_HEIGHT))
             self.high_score_input_screen = pygame_menu.Menu("New Highscore",SCREEN_WIDTH,SCREEN_HEIGHT)
@@ -138,13 +140,14 @@ class game_play():
 
     def enter_new_user_name(self):
         print("ok")
-        self.highscores_session.high_scores_data.update_top_100(self.total_time,self.user_name_input.get_value())
+        self.highscores_session.high_scores_data.update_top_ten(self.total_time,self.user_name_input.get_value())
         print("Step 1 Done")
         pygame.quit()
         print("Step 2 aaaaaaand done")
         pygame.init()
         self.back_to_menu_function()
         print("Step done aaaand done")
+
 def end_game(start_game_time, font, high_score):
     clock = pygame.time.Clock()
     end_of_game = time.time()
