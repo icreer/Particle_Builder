@@ -1,4 +1,5 @@
 import pygame
+import pygame_menu
 from sys import exit
 from Constants.constants import *
 from game.Player import Player
@@ -103,6 +104,7 @@ class game_play():
         print()
         print(type(self.total_time))
         #if self.highscores_session.high_scores_data.check_in_high_scores(self.total_time):
+        
         if 1 == 2:
             #Open menu to add new high score name and score itself'
             high_score_input_surface = pygame.display.set_mode((SCREEN_WIDTH,SCREEN_HEIGHT))
@@ -145,6 +147,7 @@ class game_play():
         pygame.init()
         self.back_to_menu_function()
         print("Step done aaaand done")
+
 def end_game(start_game_time, font, high_score):
     clock = pygame.time.Clock()
     end_of_game = time.time()
