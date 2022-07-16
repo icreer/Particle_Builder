@@ -92,15 +92,26 @@ class game_play():
             pygame.display.update()
             self.clock.tick(60)
 
-        end_game(start_game_time)
+        end_game(start_game_time, font)
 
-def end_game(start_game_time):
+def end_game(start_game_time, font):
     end_of_game = time.time()
-    while True:
+    end_screen = True
+    while end_screen:
         screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
         screen.fill(black)
-            
-        print(end_of_game - start_game_time)
+        score_card = font.render("The time you took was: "+ str(round(end_of_game - start_game_time,2)) + " seconds", True, white)    
+        press_any_button = font.render("Press any button to continue", True, white)
+        screen.blit(score_card , (SCREEN_WIDTH/4, SCREEN_HEIGHT/2))
+        screen.blit(press_any_button, (SCREEN_WIDTH/3, SCREEN_HEIGHT/1.5))
+
+       
+        for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    exit()
+                if event.type == pygame.KEYDOWN:
+                    end_screen = False
         pygame.display.update()
            
 
