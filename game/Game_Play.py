@@ -94,13 +94,14 @@ class game_play():
 
         end_game(start_game_time)
 
-    def end_game(start_game_time):
-        while True:
-            screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-            screen.fill(black)
-            end_of_game = time.time()
-            print(end_of_game - start_game_time)
-            pygame.display.update()
+def end_game(start_game_time):
+    end_of_game = time.time()
+    while True:
+        screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+        screen.fill(black)
+            
+        print(end_of_game - start_game_time)
+        pygame.display.update()
            
 
         
