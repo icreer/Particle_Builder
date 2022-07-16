@@ -352,9 +352,9 @@ def check_if_collison_is_with_player(check, collision, player, entities):
         for entity in entities:
             if entity.get_coordinates() == check:
                 player.charge += entity.charge
-                if entity.tag == "Light":
+                if entity.tag == "light":
                     radius = player.get_radius()
-                    player.set_radius(radius * .5)
+                    player.set_radius(radius * 0.5  )
                     
                 elif entity.tag == "protons":
                     radius = player.get_radius()
