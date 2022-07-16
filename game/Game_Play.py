@@ -24,6 +24,7 @@ class game_play():
         pygame.display.set_caption(TITLE)
         self.clock = pygame.time.Clock()
         #sprites = pygame.sprite.Sprite()
+        start_game_time = time.time()
         entities = []
         player = Player()
         spawner = Spawner(screen)
@@ -91,14 +92,16 @@ class game_play():
             pygame.display.update()
             self.clock.tick(60)
 
-        self.end_game()
+        end_game(start_game_time)
 
-    def end_game(self):
+    def end_game(start_game_time):
         while True:
-            self.screen.fill(black)
+            screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+            screen.fill(black)
+            end_of_game = time.time()
+            print(end_of_game - start_game_time)
             pygame.display.update()
-            self.end_of_game = time.time()
-            print(self.end_of_game - self.start_of_game)
+           
 
         
         
