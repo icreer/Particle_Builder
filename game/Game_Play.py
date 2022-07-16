@@ -88,7 +88,7 @@ class game_play():
             self.clock.tick(60)
             
             
-            if player.proton_count == 92:
+            if player.proton_count == 90:
                 break
                 
 
