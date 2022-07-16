@@ -95,6 +95,56 @@ class game_play():
 
         end_game(start_game_time, font, self.top_score)
 
+
+    def end_game_V2(self):
+        
+        end_of_game = time.time()
+        self.total_time = end_of_game - self.start_of_game
+        print()
+        print(type(self.total_time))
+        #if self.highscores_session.high_scores_data.check_in_high_scores(self.total_time):
+        if 1 == 2:
+            #Open menu to add new high score name and score itself'
+            high_score_input_surface = pygame.display.set_mode((SCREEN_WIDTH,SCREEN_HEIGHT))
+            self.high_score_input_screen = pygame_menu.Menu("New Highscore",SCREEN_WIDTH,SCREEN_HEIGHT)
+            self.high_score_input_screen.add.label("NEW HIGHSCORE")
+            self.user_name_input = self.high_score_input_screen.add.text_input("Username:")
+            self.enter_user_name_button = self.high_score_input_screen.add.button("Enter",self.enter_new_user_name)
+            self.high_score_input_screen.mainloop(high_score_input_surface)
+
+            """
+            self.highscores_session.update_top_ten(score,name)
+            """
+        else:
+            end_of_game = time.time()
+            end_screen = True
+            while end_screen:
+                screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+                screen.fill(black)
+                score_card = self.font.render("The time you took was: "+ str(round(end_of_game - self.start_game_time,2)) + " seconds", True, white)    
+                press_any_button = self.font.render("Press any button to continue", True, white)
+                screen.blit(score_card , (SCREEN_WIDTH/4, SCREEN_HEIGHT/2))
+                screen.blit(press_any_button, (SCREEN_WIDTH/3, SCREEN_HEIGHT/1.5))
+
+
+                for event in pygame.event.get():
+                        if event.type == pygame.QUIT:
+                            pygame.quit()
+                            exit()
+                        if event.type == pygame.KEYDOWN:
+                            end_screen = False
+                pygame.display.update()
+                
+
+    def enter_new_user_name(self):
+        print("ok")
+        self.highscores_session.high_scores_data.update_top_100(self.total_time,self.user_name_input.get_value())
+        print("Step 1 Done")
+        pygame.quit()
+        print("Step 2 aaaaaaand done")
+        pygame.init()
+        self.back_to_menu_function()
+        print("Step done aaaand done")
 def end_game(start_game_time, font, high_score):
     clock = pygame.time.Clock()
     end_of_game = time.time()
@@ -173,5 +223,7 @@ def end_game(start_game_time, font, high_score):
         clock.tick(60)
            
 
+    
+
         
-        
+    
