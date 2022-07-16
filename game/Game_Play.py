@@ -22,7 +22,7 @@ class game_play():
         screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
         font = pygame.font.Font("Constants/Fonts/Inter.ttf",32)
         pygame.display.set_caption(TITLE)
-        clock = pygame.time.Clock()
+        self.clock = pygame.time.Clock()
         #sprites = pygame.sprite.Sprite()
         entities = []
         player = Player()
@@ -81,7 +81,7 @@ class game_play():
                     
 
             pygame.display.update()
-            clock.tick(60)
+            self.clock.tick(60)
             
             
             if player.proton_count == 90:
