@@ -1,4 +1,3 @@
-from tkinter import S
 import pygame
 from sys import exit
 from Constants.constants import *
@@ -8,15 +7,16 @@ from game.HUD import HUD
 import time
 from game.collision import check_collision
 
+"""
+The Game play class deals the main game play. All of the game play really happens inside
+of the start game play fucntion. The game play fuction uses stuff from the Player, Spawner
+, collision and HUD classes.
+"""
 class game_play():
     def __init__(self,top_score):
         self.top_score = top_score
 
-    def calculate_deltatime(self):
-        self.dt = time.time() - self.previous_frame_time
-        self.dt *= 60
-        self.previous_frame_time = time.time()
-
+# This is the magic fuction that runs the game
     def start_game_play(self):
         screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
         font = pygame.font.Font("Constants/Fonts/Inter.ttf",32)
@@ -30,6 +30,7 @@ class game_play():
         atomdiction = dict()
         gamestate = 0
         
+        # This creates the Dictionary for the type of atoms that show up in the HUD
         with open("Constants/Atom list.csv") as atom:
             for line in atom:
                 Atom_properdy = line.split(",")
@@ -37,11 +38,11 @@ class game_play():
                 Chemical_name = Atom_properdy[1]
                 atomdiction[Atomic_number] = Chemical_name
 
-        
+        # This while loop is what the game happens in
         while True:
            
             screen.fill(black)
-            
+            # This condistions is what needs to be fulled or the game to switch from Qurts to main things in chemistry 
             if gamestate == 0:
                 spawner.spawner_start(entities)
                 if player.charge > .95  and player.charge < 1.05:
