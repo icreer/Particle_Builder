@@ -9,7 +9,7 @@ from Constants.constants import *
 pygame.init()
 class Menu():
     """Main menu class"""
-    def open_menu(self):
+    def open_menu(self): 
 
         #Establishing the main window itself
         self.main_surface = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
@@ -34,19 +34,15 @@ class Menu():
 
     def open_high_scores(self):
         """Method for opening the high scores window""" 
-        
         self.high_scores_session.show_high_scores()
         
-
     def start_game(self):
         """Method called when the user hits 'play' in main menu"""
-        game_session = game_play(self.top_score)
+        game_session = game_play(self.top_score,self.high_scores_session,self.open_menu)
         game_session.start_game_play()
         
-
 #Create instance of begin_game menu class
 new_menu = Menu()
 #Initiate begin_game menu
 new_menu.open_menu()
-
 

@@ -116,6 +116,7 @@ class HighScoresData():
     def update_top_100(self,new_score,new_user):
         """Function to check if a new score belongs on the top 100 list. 
         If it does, this function places that score in the list.z"""
+        print("hi")
         bottom_score = self.top_100_ref.child("100").get().get("score")
         if new_score > float(bottom_score):
             in_top_100 = False
@@ -174,3 +175,10 @@ class HighScoresData():
                 "score": "0",
                 "user": " "
             })
+
+    def check_in_high_scores(self,number):
+        for i in range(100,0,-1):
+            if number > float(self.top_100_ref.child(str(i)).get().get("score")):
+                return True
+
+        return False
