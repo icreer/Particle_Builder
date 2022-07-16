@@ -17,6 +17,7 @@ the player then the player loses an electron.
 
 * Pygame
 * Pygame menu
+* firebase database
 
 # Collaborators
 
@@ -28,13 +29,13 @@ Logan Andrus
 
 # Useful Websites
 
-{Make a list of websites that you found helpful in this project}
+
 * [Geeks for Geeks](https://www.geeksforgeeks.org/k-dimensional-tree/)
 * [Pygame](http://www.pygame.org)
 
 # Future Work
 
 {Make a list of things that you need to fix, improve, and add in the future.}
-* Item 1
+* Make every entity a sprite instead of a colored circle 
 * Item 2
 * Item 3
