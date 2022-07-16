@@ -44,9 +44,12 @@ class HighScoresData():
     """Class to handle working with the Particle Builder high scores database"""
     def __init__(self):
         cred = credentials.Certificate("main_menu/particle_builder_authentication_key.json")
-        firebase_admin.initialize_app(cred, {
-            "databaseURL":"https://particle-builder-default-rtdb.firebaseio.com/"
-        })
+        try:
+            firebase_admin.initialize_app(cred, {
+                "databaseURL":"https://particle-builder-default-rtdb.firebaseio.com/"
+            })
+        except:
+            pass
 
         self.top_ten_ref = db.reference("top_ten")
         self.top_100_ref = db.reference("top_hundred")
