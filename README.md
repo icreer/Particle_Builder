@@ -29,8 +29,8 @@ Logan Andrus
 # Useful Websites
 
 {Make a list of websites that you found helpful in this project}
-* [Geeks for Geeks](https://www.geeksforgeeks.org/k-dimensional-tree/#:~:text=A%20K%2DD%20Tree(also%20called,in%20a%20K%2DDimensional%20space.)
-* [Web Site Name](http://url.link.goes.here)
+* [Geeks for Geeks](https://www.geeksforgeeks.org/k-dimensional-tree/)
+* [Pygame](http://www.pygame.org)
 
 # Future Work
 
