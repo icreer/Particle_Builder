@@ -73,7 +73,6 @@ class game_play():
             if keys[pygame.K_d]:
                 player.move_right()
 
-
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
@@ -82,4 +81,23 @@ class game_play():
 
             pygame.display.update()
             clock.tick(60)
+            
+            
+            if player.proton_count == 90:
+                break
+                
+
+            pygame.display.update()
+            self.clock.tick(60)
+
+        self.end_game()
+
+    def end_game(self):
+        while True:
+            self.screen.fill(black)
+            pygame.display.update()
+            self.end_of_game = time.time()
+            print(self.end_of_game - self.start_of_game)
+
+        
         
