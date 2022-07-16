@@ -2,15 +2,14 @@
 
 # Overview
 
-The particle builder is a game that is a mash-up of asteroid in 2048. 
-The overall goal is to build largest stable atom that you can. Witch is a 
-debated topic but in nature is Uranium with a atomic number of 92. The 
+The particle builder is a game that is a mash-up of asteroid and 2048. 
+The overall goal is to build largest stable atom that you can. In nature,
+the largest stable atom is Uranium, with a atomic weight of 92. The 
 challenge of the game is building up to Uranium from a single up quark. As 
-you build up to a Uranium Atom you can build an unstable radioactive atom 
-that once can lead to your atom decaying and you being set back in your 
-progress of building your atom. Another risk that the player has is that high 
-energy light waves can come in and destroy your atom by chipping off a 
-electron.
+you build up to a Uranium Atom you can build an unstable radioactive isotope 
+that can lead to your atom decaying and you being set back in your 
+progress of building your atom. High energy light also spawns, and if it hits
+the player then the player loses an electron.
 
 [Software Demo Video](http://youtube.link.goes.here)
 
@@ -30,7 +29,7 @@ Logan Andrus
 # Useful Websites
 
 {Make a list of websites that you found helpful in this project}
-* [Web Site Name](http://url.link.goes.here)
+* [Geeks for Geeks](https://www.geeksforgeeks.org/k-dimensional-tree/#:~:text=A%20K%2DD%20Tree(also%20called,in%20a%20K%2DDimensional%20space.)
 * [Web Site Name](http://url.link.goes.here)
 
 # Future Work
