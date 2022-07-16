@@ -40,7 +40,7 @@ class Menu():
 
     def start_game(self):
         """Method called when the user hits 'play' in main menu"""
-        game_session = game_play(self.top_score)
+        game_session = game_play(self.top_score,self.high_scores_session,self.open_menu)
         game_session.start_game_play()
         #game_session.end_game_V2()
         
