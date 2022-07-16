@@ -364,7 +364,7 @@ def check_if_collison_is_with_player(check, collision, player, entities):
                     player.charge += entity.charge
                 else:
                     radius = player.get_radius()
-                    player.set_radius(radius + (entity.get_radius() * .05))
+                    player.set_radius(radius + (entity.get_radius() * .03))
                     player.charge += entity.charge
                     
     
