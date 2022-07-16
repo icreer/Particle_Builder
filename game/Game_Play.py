@@ -4,6 +4,7 @@ from Constants.constants import *
 from game.Player import Player
 from game.Spawner import Spawner
 from game.HUD import HUD
+from main_menu.High_Score import HighScoresData
 import time
 from game.collision import check_collision
 
@@ -85,34 +86,91 @@ class game_play():
             self.clock.tick(60)
             
             
-            if player.proton_count == 90:
+            if player.proton_count == 92:
                 break
                 
 
             pygame.display.update()
             self.clock.tick(60)
 
-        end_game(start_game_time, font)
+        end_game(start_game_time, font, self.top_score)
 
-def end_game(start_game_time, font):
+def end_game(start_game_time, font, high_score):
+    clock = pygame.time.Clock()
     end_of_game = time.time()
     end_screen = True
+    player_score = end_of_game - start_game_time
+    high_score_database = HighScoresData()
+    does_make_in_top_ten = False
+    does_make_in_top_100 = False
+    user_id = ""
+    input_rect = pygame.Rect(SCREEN_WIDTH/3,SCREEN_HEIGHT/3, 300, 64) 
+    has_enter_in_id = False
+    active = False
+    rect_color = gray
     while end_screen:
         screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
         screen.fill(black)
-        score_card = font.render("The time you took was: "+ str(round(end_of_game - start_game_time,2)) + " seconds", True, white)    
+        score_card = font.render("The time you took was: "+ str(round(player_score,2)) + " seconds", True, white)
+        high_scores = font.render("The high score is " + str(high_score), True, white)    
         press_any_button = font.render("Press any button to continue", True, white)
-        screen.blit(score_card , (SCREEN_WIDTH/4, SCREEN_HEIGHT/2))
-        screen.blit(press_any_button, (SCREEN_WIDTH/3, SCREEN_HEIGHT/1.5))
+        user_id_message = font.render("Please enter in your User id", True, white)
 
-       
+        screen.blit(score_card , (SCREEN_WIDTH/4, 50))
+        screen.blit(user_id_message,(SCREEN_WIDTH/4, 200))
+
+
+        screen.blit(press_any_button, (SCREEN_WIDTH/4, SCREEN_HEIGHT/1.5))
+        screen.blit(high_scores,(SCREEN_WIDTH/4, SCREEN_HEIGHT/2) )
+
         for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     exit()
                 if event.type == pygame.KEYDOWN:
-                    end_screen = False
+                    if event.key == pygame.K_BACKSPACE:
+                        user_id = user_id[:-1]
+                    elif event.key == pygame.K_RETURN:
+                        has_enter_in_id = True
+                        does_make_in_top_ten = high_score_database.update_top_ten(player_score,user_id)
+                        if not does_make_in_top_ten:
+                            does_make_in_top_100 = high_score_database.update_top_100(player_score,user_id)
+                    elif has_enter_in_id:
+                        end_screen = False
+                    else: 
+                        user_id += event.unicode
+                    
+
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    if input_rect.collidepoint(event.pos):
+                        active = True
+                    else: 
+                        active = False
+
+
+
+        if active:
+            rect_color = SkyBlue
+        else:
+            rect_color = gray
+        press_any_button = font.render("Press any button to continue", True, white)
+        user_id_message = font.render("Please enter in your User id", True, white)
+        user_text = font.render(user_id,True,white)
+        
+
+        if not has_enter_in_id:
+            pygame.draw.rect(screen,rect_color, input_rect)
+            screen.blit(user_text,(input_rect.x+5,input_rect.y+5))
+            screen.blit(user_id_message,(SCREEN_WIDTH/4, 200))
+            
+            input_rect.w = max(100, user_text.get_width()+10)
+
+        else:
+            screen.blit(press_any_button, (SCREEN_WIDTH/4, SCREEN_HEIGHT/1.5))
+        
         pygame.display.update()
+
+        clock.tick(60)
            
 
         

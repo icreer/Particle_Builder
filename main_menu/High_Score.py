@@ -111,27 +111,29 @@ class HighScoresData():
         in_top_ten = False
         for i in range(1,11):
             current_score_to_compare = float(self.top_ten_ref.child(str(i)).get().get("score"))
-            if new_score > current_score_to_compare:
+            if new_score < current_score_to_compare:
                 print(f"This score should be in {i} place")
                 self.rearrange_top_ten(i,str(new_score),new_user)
                 in_top_ten = True
-                break
+                return in_top_ten
                 
         if not in_top_ten:
             print("That score didn't make it")
-            self.update_top_100(new_score,new_user)
+            #self.update_top_100(new_score,new_user)
+            return in_top_ten
 
     def update_top_100(self,new_score,new_user):
         """Function to check if a new score belongs on the top 100 list. 
         If it does, this function places that score in the list.z"""
         bottom_score = self.top_100_ref.child("100").get().get("score")
-        if new_score > float(bottom_score):
-            in_top_100 = False
+        if new_score < float(bottom_score):
             for i in range(11,101):
                 current_score_to_compare = float(self.top_100_ref.child(str(i)).get().get("score"))
                 if new_score > current_score_to_compare:
                     self.rearrange_top_hundred(i,new_score,new_user)
-                    
+                    return True
+        else:
+            return False
 
     def display_top_ten(self):
         """Function to retreive the top 10 list for displaying"""

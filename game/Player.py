@@ -27,7 +27,7 @@ class Player(Entity):
         self.tag = 'Player'
         self.radius = 15 
         self.charge = 2/3
-        self.proton_count = 89
+        self.proton_count = 90
        
 
     def checky(self):
