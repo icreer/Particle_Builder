@@ -327,9 +327,6 @@ def check_collision(player, coordinate_array, entity_array):
     
 
     #Currently the player is not in the entity array or the coordinate array
-
-
-
     for entity in entity_array:
         check = entity.get_coordinates()
         radius = entity.get_radius()
@@ -364,6 +361,3 @@ def check_if_collison_is_with_player(check, collision, player, entities):
                     radius = player.get_radius()
                     player.set_radius(radius + (entity.get_radius() * .05))
                     
-    
-
-    

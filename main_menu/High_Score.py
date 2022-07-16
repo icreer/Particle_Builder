@@ -20,7 +20,6 @@ class HighScoreMenu():
         self.high_score_screen = pygame_menu.Menu("Highscores",SCREEN_WIDTH,SCREEN_HEIGHT,onclose=self.close)
         self.high_score_screen.add.label("Highscores:")
 
-
         self.retrieve_high_scores()
         for i in range(1,11):
             new_score_user = self.high_score_list.get(i)[0]
@@ -31,14 +30,10 @@ class HighScoreMenu():
         self.high_score_screen.mainloop(self.high_score_surface)
     
     def get_top_score(self):
-        return self.high_scores_data.top_ten_ref.child("1").get().get("score")
-               
+        return self.high_scores_data.top_ten_ref.child("1").get().get("score")    
 
     def close(self):
         self.close_function()
-
-
-
 
 class HighScoresData():
     """Class to handle working with the Particle Builder high scores database"""
