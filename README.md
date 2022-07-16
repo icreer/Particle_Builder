@@ -20,10 +20,10 @@ the player then the player loses an electron.
 
 # Collaborators
 
-Aiden Edwards
-Isaac Creer
-Jacob Johnson
-Kouadio Konan
+Aiden Edwards\
+Isaac Creer\
+Jacob Johnson\
+Kouadio Konan\
 Logan Andrus
 
 # Useful Websites
