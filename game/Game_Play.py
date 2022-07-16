@@ -114,9 +114,6 @@ class game_play():
             self.enter_user_name_button = self.high_score_input_screen.add.button("Enter",self.enter_new_user_name)
             self.high_score_input_screen.mainloop(high_score_input_surface)
 
-            """
-            self.highscores_session.update_top_ten(score,name)
-            """
         else:
             end_of_game = time.time()
             end_screen = True
@@ -147,6 +144,10 @@ class game_play():
         pygame.init()
         self.back_to_menu_function()
         print("Step done aaaand done")
+
+
+
+
 
 def end_game(start_game_time, font, high_score):
     clock = pygame.time.Clock()

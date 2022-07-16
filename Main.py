@@ -36,7 +36,6 @@ class Menu():
         """Method for opening the high scores window""" 
         
         self.high_scores_session.show_high_scores()
-        
 
     def start_game(self):
         """Method called when the user hits 'play' in main menu"""

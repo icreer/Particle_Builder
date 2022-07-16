@@ -111,6 +111,12 @@ class HighScoresData():
         in_top_ten = False
         for i in range(1,11):
             current_score_to_compare = float(self.top_ten_ref.child(str(i)).get().get("score"))
+            if current_score_to_compare == 0:
+                self.rearrange_top_ten(i,str(new_score),new_user)
+                in_top_ten = True
+                return in_top_ten
+                
+        
             if new_score < current_score_to_compare:
                 print(f"This score should be in {i} place")
                 self.rearrange_top_ten(i,str(new_score),new_user)
@@ -126,6 +132,7 @@ class HighScoresData():
         """Function to check if a new score belongs on the top 100 list. 
         If it does, this function places that score in the list.z"""
         bottom_score = self.top_100_ref.child("100").get().get("score")
+        
         if new_score < float(bottom_score):
             for i in range(11,101):
                 current_score_to_compare = float(self.top_100_ref.child(str(i)).get().get("score"))
@@ -141,6 +148,8 @@ class HighScoresData():
         for i in range(1,11):
             score = self.top_ten_ref.child(str(i)).get().get("score")
             user = self.top_ten_ref.child(str(i)).get().get("user")
+            if score == "9999990":
+                score = "0"
             display_dict[i] = [user,score]
             
         return display_dict
@@ -151,6 +160,8 @@ class HighScoresData():
         for i in range(1,101):
             score = self.top_100_ref.child(str(i)).get().get("score")
             user = self.top_100_ref.child(str(i)).get().get("user")
+            if score == "9999990":
+                score = "0"
             display_dict[i] = [user,score]
 
         return display_dict
@@ -176,14 +187,19 @@ class HighScoresData():
         for i in range(1,101):
             if i < 11:
                 self.top_ten_ref.child(str(i)).update({
-                    "score": "0",
+                    "score": "999990",
                     "user": " "
                 })
 
             self.top_100_ref.child(str(i)).update({
-                "score": "0",
+                "score": "9999990",
                 "user": " "
             })
 
     def check_in_high_scores(self,score):
         return score < float(self.top_100_ref.child("100").get().get("score"))
+
+
+
+
+
