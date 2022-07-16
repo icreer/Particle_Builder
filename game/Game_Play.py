@@ -7,6 +7,7 @@ from game.HUD import HUD
 import time
 from game.collision import check_collision
 
+
 """
 The Game play class deals the main game play. All of the game play really happens inside
 of the start game play fucntion. The game play fuction uses stuff from the Player, Spawner
