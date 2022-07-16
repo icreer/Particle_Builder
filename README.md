@@ -37,5 +37,5 @@ Logan Andrus
 
 {Make a list of things that you need to fix, improve, and add in the future.}
 * Make every entity a sprite instead of a colored circle 
-* Item 2
-* Item 3
+* Make the end screen run faster
+* Make thinks look nicer

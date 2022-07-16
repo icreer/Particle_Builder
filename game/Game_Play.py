@@ -94,8 +94,8 @@ class game_play():
 
             pygame.display.update()
             self.clock.tick(60)
-
-        self.end_game_V2()
+        end_game(self.start_game_time,self.font,self.top_score)
+       # self.end_game_V2()
 
 
     def end_game_V2(self):
@@ -104,19 +104,13 @@ class game_play():
         self.total_time = end_of_game - self.start_game_time
         print()
         print(type(self.total_time))
-<<<<<<< HEAD
-        #if self.highscores_session.high_scores_data.check_in_high_scores(self.total_time):
-        
-        if 1 == 2:
-=======
         if self.highscores_session.high_scores_data.check_in_high_scores(self.total_time):
        
->>>>>>> ea2d0c376583f7a72ba4bfb46971c557233cf590
             #Open menu to add new high score name and score itself'
             high_score_input_surface = pygame.display.set_mode((SCREEN_WIDTH,SCREEN_HEIGHT))
             self.high_score_input_screen = pygame_menu.Menu("New Highscore",SCREEN_WIDTH,SCREEN_HEIGHT)
             self.high_score_input_screen.add.label("NEW HIGHSCORE")
-            self.user_name_input = self.high_score_input_screen.add.text_input("Username:")
+            self.user_name_input = self.high_score_input_screen.add.text_input("Username: ")
             self.enter_user_name_button = self.high_score_input_screen.add.button("Enter",self.enter_new_user_name)
             self.high_score_input_screen.mainloop(high_score_input_surface)
 
