@@ -11,7 +11,7 @@ that can lead to your atom decaying and you being set back in your
 progress of building your atom. High energy light also spawns, and if it hits
 the player then the player loses an electron.
 
-[Software Demo Video](http://youtube.link.goes.here)
+[Software Demo Video](https://youtu.be/HErXPDz5qsA)
 
 # Development Environment
 
